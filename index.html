@@ -90,18 +90,26 @@
             visibility: hidden;
         }
 
-        .loader-logo {
-            width: 150px;
-            height: 150px;
-            margin-bottom: 20px;
-            background-color: var(--primary-color);
-            border-radius: 50%;
+        .loader-logos {
             display: flex;
             justify-content: center;
             align-items: center;
-            color: white;
-            font-size: 60px;
-            animation: pulse 2s infinite;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .loader-logo {
+            width: 120px;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loader-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
         }
 
         .loader-text {
@@ -554,10 +562,17 @@
     </style>
 </head>
 <body>
-    <!-- Loader -->
-
+   <!-- Loader -->
     <div id="loader">
-        <img src="logo.png" witdh="60px">
+        <div class="loader-logos">
+            <div class="loader-logo">
+                <img src="logoa.png" alt="Happy Shop Logo">
+            </div>
+            <div class="loader-logo">
+                <img src="logob.png" alt="Martina Catering Logo">
+            </div>
+        </div>
+        <div class="loader-text">Caricamento...</div>
     </div>
 
     <!-- Header -->
@@ -565,7 +580,8 @@
         <div class="container header-container">
             <div class="logo">
                 <!-- Remplacez logo.png par votre logo -->
-                <img src="logo.png" alt="Happy Shop Logo" style="height: 60px;">
+                <img src="logoa.png" alt="Happy Shop Logo" style="height: 120px;">
+                <img src="logob.png" alt="Happy Shop Logo" style="height: 120px;">
             </div>
             <div class="mobile-menu">☰</div>
             <nav>
