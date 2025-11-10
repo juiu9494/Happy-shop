@@ -6,7 +6,6 @@
     <title>Happy Shop - Preparazione Eventi e Matrimoni</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Styles généraux */
         * {
             margin: 0;
             padding: 0;
@@ -119,23 +118,12 @@
         }
 
         @keyframes pulse {
-            0% {
-                transform: scale(0.95);
-                box-shadow: 0 0 0 0 rgba(248, 180, 217, 0.7);
-            }
-            
-            70% {
-                transform: scale(1);
-                box-shadow: 0 0 0 20px rgba(248, 180, 217, 0);
-            }
-            
-            100% {
-                transform: scale(0.95);
-                box-shadow: 0 0 0 0 rgba(248, 180, 217, 0);
-            }
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(248, 180, 217, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 20px rgba(248, 180, 217, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(248, 180, 217, 0); }
         }
 
-        /* Header et Navigation */
+        /* Header */
         header {
             background-color: white;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -152,8 +140,14 @@
             padding: 15px 0;
         }
 
-        .logo {
-            height: 60px;
+        .header-logos {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header-logos img {
+            height: 120px;
         }
 
         nav ul {
@@ -317,11 +311,6 @@
 
         .gallery-item:hover .gallery-overlay {
             opacity: 1;
-        }
-
-        .gallery-overlay h3 {
-            color: white;
-            text-align: center;
         }
 
         /* About Section */
@@ -506,18 +495,12 @@
 
         /* Responsive */
         @media (max-width: 992px) {
-            .about-content {
+            .about-content, .contact-container {
                 flex-direction: column;
             }
-
-            .contact-container {
-                flex-direction: column;
-            }
-
             .footer-content {
                 flex-wrap: wrap;
             }
-
             .footer-column {
                 flex: 1 0 45%;
                 margin-bottom: 30px;
@@ -528,7 +511,6 @@
             .mobile-menu {
                 display: block;
             }
-
             nav ul {
                 position: fixed;
                 top: 80px;
@@ -541,34 +523,43 @@
                 padding-top: 50px;
                 transition: left 0.3s ease;
             }
-
             nav ul.active {
                 left: 0;
             }
-
             nav ul li {
                 margin: 15px 0;
             }
-
             .hero-content h1 {
                 font-size: 2.5rem;
             }
-
             .footer-column {
                 flex: 1 0 100%;
                 margin-right: 0;
+            }
+            .loader-logos {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .loader-logo {
+                width: 100px;
+                height: 100px;
+            }
+            .header-logos {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .header-logos img {
+                height: 80px;
             }
         }
     </style>
 </head>
 <body>
-   <!-- Loader -->
+    <!-- Loader -->
     <div id="loader">
         <div class="loader-logos">
             <div class="loader-logo">
                 <img src="logoa.png" alt="Happy Shop Logo">
-                 <img src="logoab.png" alt="Happy Shop Logo"
-                
             </div>
             <div class="loader-logo">
                 <img src="logob.png" alt="Martina Catering Logo">
@@ -580,10 +571,9 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <div class="logo">
-                <!-- Remplacez logo.png par votre logo -->
-                <img src="logoa.png" alt="Happy Shop Logo" style="height: 120px;">
-                <img src="logob.png" alt="Happy Shop Logo" style="height: 120px;">
+            <div class="header-logos">
+                <img src="logoa.png" alt="Happy Shop Logo">
+                <img src="logob.png" alt="Martina Catering Logo">
             </div>
             <div class="mobile-menu">☰</div>
             <nav>
@@ -665,13 +655,6 @@
                     </div>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">📸</div>
-                    <div class="service-content">
-                        <h3>ALBUM FOTOGRAFICI</h3>
-                        <p>Album fotografici artigianali per preservare i tuoi ricordi più preziosi.</p>
-                    </div>
-                </div>
-                <div class="service-card">
                     <div class="service-icon">💌</div>
                     <div class="service-content">
                         <h3>PARTECIPAZIONI</h3>
@@ -698,84 +681,72 @@
             </div>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/485982138_1184382790143848_3447934468896369283_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=833d8c&_nc_ohc=HMbfa1AaCFkQ7kNvwGrfHt7&_nc_oc=Adn5r24JVueio1FQzXlXpNwuU7ssxpUezRXa025W3buUJF0UG3sdy0_dNAx1kmr9Y5w&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&_nc_gid=9zhTzrodyVkIqtfDK7_dPA&oh=00_AfhIeqp6xSrHupOfzXHhNU9aCmlwnRtBiOP8vYUi5zZLhA&oe=6913E870" alt="Torta nuziale">
-                    <div class="gallery-overlay">
-                      
-                    </div>
+                    <img src="https://scontent.fflr2-1.fna.fbcdn.net/v/t51.82787-15/520284464_17911446750169329_7889750388124726471_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=O9B6Qsj9xYUQ7kNvwFn40rg&_nc_oc=AdnVmAdb8umnVGS74WKYMkmOcFUkU9T7tY0T05TYh8fLybLy-FGjidzlJTsUf4SscI4&_nc_zt=23&_nc_ht=scontent.fflr2-1.fna&_nc_gid=44AFKo799JnoEhSR95ijWA&oh=00_AfjmyBfhnxNcawBZVdCnqB2xMbzgrFgcs7i4TXJmngpt3w&oe=6917C318" alt="Torta nuziale">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://scontent.fflr2-1.fna.fbcdn.net/v/t39.30808-6/486805860_2980469788800372_7000777006314231489_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=Jm7q0t9J8hQQ7kNvwFqvZoW&_nc_oc=AdngO43ifFZDhw3ebZJ_RSL85fHS1_ZmHs99LAxkJyu4i5UbothCuO3DtwGVPOy0ACU&_nc_zt=23&_nc_ht=scontent.fflr2-1.fna&_nc_gid=tOpfJsHvJrKISumqhHXIkw&oh=00_AfjnTWFFfNwvaIWkcoe1vOAvodcXISboKf-4PPIAofRkdQ&oe=6916592B" alt="Decorazione matrimonio">
-                    <div class="gallery-overlay">
-                       
-                    </div>
+                    <img src="https://scontent.fflr2-1.fna.fbcdn.net/v/t51.82787-15/520222202_17911446798169329_6222689926712853630_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_ohc=aoPLwULwbO4Q7kNvwEDMn8z&_nc_oc=Adk61gNnJ3aWa7d83p0N5Y2fZvcF-uFS1qwhsXCypHQoEQfoy_EmNBFaWYjnbXIA7bA&_nc_zt=23&_nc_ht=scontent.fflr2-1.fna&_nc_gid=w0BYt_vpXb8tBLZdEbpMHQ&oh=00_AfhUqETPslLsbSQC4eK0TRskpI2cdHVYU6Ot6iFBeCYVgQ&oe=6917B7E2" alt="Decorazione matrimonio">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/480949686_122203757936218278_838309696768428406_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_ohc=szRxWWfudFUQ7kNvwGVKm7J&_nc_oc=AdlFs3aN5l5PK6S1vFg0DxETYZnQg4ZZ2Iv4_B2ChA9W5eQ6dMsZNGv6EHVdHmr5hg0&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&_nc_gid=kX1V-PCbhBL5JYY2Anvwxw&oh=00_AfjZAVQk5Ekf-toMzd_Gn7RrT8hhjSzl9fu4PvFkpyJ30g&oe=6913D20C" alt="Cupcakes">
-                    <div class="gallery-overlay">
-                        
-                    </div>
+                    <img src="https://scontent.fflr2-1.fna.fbcdn.net/v/t51.82787-15/521135262_17911446732169329_9078902539300771278_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_ohc=2HR9P4N9BJUQ7kNvwFWghgp&_nc_oc=AdlOxKuqoP-vkxdGv0AOTQuQaDtnX_6h0On1l9B2C6wqbJQJP6rJ1WqHGdeS5yuSfzE&_nc_zt=23&_nc_ht=scontent.fflr2-1.fna&_nc_gid=TLIkXoMFwHuz-lgJtIQ_rA&oh=00_AfgeCCZlQQ6bHN6q4abl3vfOSy2h8IfWoIZyEBjIeeTmgA&oe=6917EBF9" alt="Cupcakes">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/485957887_1184382723477188_1150661161133877160_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=833d8c&_nc_ohc=2W2Zeo1f9rkQ7kNvwE4I086&_nc_oc=AdkCftvZLf_b9aI8JePI5_xhBrgx7mmzXgA9WlkBkQRfybdz5pL4V2pTetVz4Hcs4Eg&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&_nc_gid=O2FHoOmNtK_NwYFFU6MT0g&oh=00_AfgwhzE0HuGa5-PYeKvzzdWlal6fkW8p4-lAXi5I8NGzFw&oe=6913CA13" alt="Palloncini">
-                    <div class="gallery-overlay">
-                        
-                    </div>
+                    <img src="https://scontent.fflr2-1.fna.fbcdn.net/v/t39.30808-6/482213711_122203757408218278_1153102591793633617_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_ohc=AGj3ERmu15cQ7kNvwE0VKOB&_nc_oc=AdkUzQl9bHBd0kgXDI9yIQwd8n9-W0hXkHhKGt5a-m2ohZAMTEHvumjWB6eJZaHlcYY&_nc_zt=23&_nc_ht=scontent.fflr2-1.fna&_nc_gid=b2q93rFs9A45MiR6rlkgDg&oh=00_AfjNV_h7rtatRxHWh10I7sqr_VKxcVFh_eoM8Elm1A444A&oe=6917DBDB" alt="Palloncini">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://scontent-ams2-1.xx.fbcdn.net/v/t1.6435-9/92462280_2933036483424056_3394623553826455552_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=cf85f3&_nc_ohc=4YYdWtYwvrUQ7kNvwHJUhhC&_nc_oc=AdnuVRs1ZVe43qKnwGG1vCoh-fnH8XnRf_fskEgHu7SM-rCp9JUktI2_AksK2uNRRjY&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&_nc_gid=XfOWNg66uUcmJZ6aPPy4Sw&oh=00_Afhwx1E8utWM43jI5JHFCYAhXMHxq-cERhIEjKL3zdL4lw&oe=6935718D" alt="Bomboniere">
-                    <div class="gallery-overlay">
-                    </div>
+                    <img src="https://scontent.fflr2-1.fna.fbcdn.net/v/t39.30808-6/480861090_122203757450218278_1660628227770601021_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_ohc=HowSjrl3ygwQ7kNvwFMB19_&_nc_oc=Adlm8JTKF38TKiAsKtc0PTqA0avxXXj8BvJf5DqzhhkD_twLddyUL33_XlSXTDBkRQw&_nc_zt=23&_nc_ht=scontent.fflr2-1.fna&_nc_gid=Q5BBZn5KbHN6uILDcyyoCg&oh=00_AfgqdEabzNYQa2fNPas91pUfXKAD3b52bHoGGR18fMOy2g&oe=6917C704" alt="Bomboniere">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://scontent.fflr2-1.fna.fbcdn.net/v/t39.30808-6/481178995_122202234092218278_2359148677318062457_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_ohc=q_nzSdK9h3kQ7kNvwGESWDN&_nc_oc=AdnYKkof-q4m-6RPt6qB95ZoZhy6a1PZQo6pFUjg1t4RBFGOAME_1Akp974MjXHZg6g&_nc_zt=23&_nc_ht=scontent.fflr2-1.fna&_nc_gid=NA8IiVQnnKwn5VAO6OO8lw&oh=00_Afj6-PY40xjv5jpSOpi0AZ8x8j9KqSLYC6aoZd8_JWxMgw&oe=6916516B" alt="Allestimenti">
-                    <div class="gallery-overlay">
-                       </div>
+                    <img src="https://scontent.fflr2-1.fna.fbcdn.net/v/t39.30808-6/480882739_122202234116218278_2102002605546282662_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_ohc=P_exFTXZNIEQ7kNvwEAu2GV&_nc_oc=Adm7x56AOZcFPFEy-268uSJpkW843KE6pzAomMCDM3rtGtC4yS4YoYyHKE5IKdX9JMQ&_nc_zt=23&_nc_ht=scontent.fflr2-1.fna&_nc_gid=ixEPXWjUnhds6pF72ChmUw&oh=00_AfizGU9jp58nZ-gLXA5QmjIpYWHWn6B-e9_2wXLCSkyCuw&oe=6917DF08" alt="Allestimenti">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://scontent.fflr2-1.fna.fbcdn.net/v/t39.30808-6/486805860_2980469788800372_7000777006314231489_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=TxRenKtYOZQQ7kNvwEGFd73&_nc_oc=AdlQltxkiwH4UDe2zEC636lAcvCqagBdLuECyRYwQ5sWZgV1x3OjxPVuxEg0h0BsEHg&_nc_zt=23&_nc_ht=scontent.fflr2-1.fna&_nc_gid=0Gv_znHp80WPnkXkMqqM9A&oh=00_AfijaKS55bYIabYRi2arasHOs89An9o0XIwRr-NEfbBtsA&oe=6917E2EB" alt="Torta nuziale">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://scontent.fflr2-1.fna.fbcdn.net/v/t51.75761-15/510455919_17908760517169329_3959474652428500064_n.jpg?stp=dst-jpegr_tt6&_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_ohc=A9X6Wy9JqEoQ7kNvwH1lkEI&_nc_oc=AdkXD2TpEl-W5Moy-th5Vmqa1SpckOmRATkKTEKWCE3kXbXK7zs43D4O8aeWnVNHw0o&_nc_zt=23&se=-1&_nc_ht=scontent.fflr2-1.fna&_nc_gid=dPgVzwWfTduiNVE8a2zYaA&oh=00_AfimLN6qBpRXTNe7XBIfiAbvW1vjsD1KcpJDwLZ_J-xvhg&oe=6917C40C" alt="Decorazione matrimonio">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://scontent.fflr2-1.fna.fbcdn.net/v/t51.75761-15/509941534_17908307235169329_3435913478780566468_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=7neq-1ptqLoQ7kNvwHaL2-O&_nc_oc=Adk0M9U6xv9gJqSZpGgz37duFcSVfSC58xOSufzyX3p5qhVp_psosyqbSh0QqefR0Wo&_nc_zt=23&_nc_ht=scontent.fflr2-1.fna&_nc_gid=aZKZfLZClISn1YREVzgShA&oh=00_Afhy7F9fDUh10wcd3Poe6j_bzrwjADKP5OFXvUlIZL-UEQ&oe=6917C4EC" alt="Cupcakes">
                 </div>
             </div>
         </div>
     </section>
-      <section class="gallery" id="galleria">
+     <!-- Gallery Section 2 -->
+    <section class="gallery" id="galleria">
         <div class="container">
             <div class="section-title">
             </div>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/486754133_1184382596810534_6807318192006291839_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_ohc=19A26W5oAUUQ7kNvwGsYDjr&_nc_oc=Adnw2z4AF5WMK4JK5pUAVufdkoN7iMbOfDNjFoQ-lFFkcBG9gAqElw7OX0HxnRiDRjU&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&_nc_gid=xQGT_aeIhk9tFYiQllYj0g&oh=00_Afi0zP9WBlDRmQWQjTfq0iWZ645ByB6vpgS2OxmfcndKxw&oe=6913C389" alt="Torta nuziale">
-                    <div class="gallery-overlay">
-                      
-                    </div>
+                    <img src="https://scontent.fflr2-1.fna.fbcdn.net/v/t51.82787-15/515058028_17909713860169329_6502075394756082758_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=f7FDxRA74HAQ7kNvwH8zQDU&_nc_oc=Adm9XSheusUP7vP7x-O4D3vc31P3ypJtmHzjpp1PmuPeF_F0QUnyKfemK_bRBn8nENw&_nc_zt=23&_nc_ht=scontent.fflr2-1.fna&_nc_gid=3dRvehSpZbUgjweLpInrYg&oh=00_AfhmpwwyOoHknPoVlpAb7jaTgiFwrxwNZGxmXxBS7ggEUQ&oe=6917DFE5" alt="Torta nuziale">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://scontent-ams2-1.xx.fbcdn.net/v/t51.75761-15/500316919_17904999717169329_8629171671867650036_n.jpg?stp=dst-jpegr_s590x590_tt6&_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=tQjsPN469T4Q7kNvwFVJrds&_nc_oc=AdkHUbZTgEAIFhjG5xCvbh1vmsORNm1zHa7nI7IUFFti48Uf3lLocPI2QLnNG4ArtS8&_nc_zt=23&se=-1&_nc_ht=scontent-ams2-1.xx&_nc_gid=CZEIERrNKfd1_pcvjGM1wg&oh=00_AfifXcjQS0UHK2seCCVMc2yqnzePfaFWtEsmeBMIvEcupQ&oe=6913EA5A" alt="Decorazione matrimonio">
-                    <div class="gallery-overlay">
-                       
-                    </div>
+                    <img src="https://scontent.fflr2-1.fna.fbcdn.net/v/t51.82787-15/514611040_17909713926169329_4854971556097846228_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=OU_zp1J9wnQQ7kNvwFwHTmw&_nc_oc=AdklH-eg10xcqQQIZBEzqKx3LeTzy3LEywixo1BAXi_kNzl6Fz2zGETWXY4rl0f1Fpk&_nc_zt=23&_nc_ht=scontent.fflr2-1.fna&_nc_gid=OlCxFlQ-zqZEQp_hxR1DgA&oh=00_Afi5dbrKF2miwPS3O2nr8uHJJ61xeOE4wapeAN25XldWdw&oe=6917E6D2" alt="Decorazione matrimonio">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://scontent-ams2-1.xx.fbcdn.net/v/t1.6435-9/175682847_3971430966251264_8804555459033211900_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Rk43QEzV-mMQ7kNvwF1brjJ&_nc_oc=AdmRe1gGdVNqAJeXL2zQ2dFvi16_ZnWrN7TIjXch1WaZP8djug0fJqywiYciTfOCXIc&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&_nc_gid=LOnBHJ1csiqi1aPkczYF9w&oh=00_AfgtyfsYQVSphi247Ess5nBKEpIbj5IBxxPXdn0AvkB2Ow&oe=693587C9" alt="Cupcakes">
-                    <div class="gallery-overlay">
-                        
-                    </div>
+                    <img src="https://scontent.fflr2-1.fna.fbcdn.net/v/t51.82787-15/520805916_17911446780169329_7794584404412818378_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=OdGZ_vZ4aOQQ7kNvwF4IBPD&_nc_oc=Adn-_60-NLyymufVpa_fODbGQvyxCFuECwfTK3t2DAMfIae8wfxsJRrCGzjBDLnDFqg&_nc_zt=23&_nc_ht=scontent.fflr2-1.fna&_nc_gid=haYYewwejy9FKJSU8oiPJA&oh=00_AfjBXeMfbPzWFI-cYFnlPdOP2v4mIW1fUZJc7yVNW2oRqA&oe=6917E9D6" alt="Cupcakes">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/480882739_122202234116218278_2102002605546282662_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_ohc=DOXGRFBkq_UQ7kNvwE2r8VS&_nc_oc=Adnmd5V419Dl235ngVAFKZfXVSpi6AQ2FRb7tMvrCTklNrwfv7jrZ2auHYcMPYjmeD4&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&_nc_gid=6jqRTWmce4X3nJbl0Q-WIA&oh=00_AfiXjkC8puLAMuBucpw4LMpGSLEdrX0EZCzA-dWHvj8sOw&oe=6913EA88" alt="Palloncini">
-                    <div class="gallery-overlay">
-                        
-                    </div>
+                    <img src="https://scontent.fflr2-1.fna.fbcdn.net/v/t51.82787-15/555050160_17919947775169329_5208290062191044718_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=wpsjIh_GjQ8Q7kNvwElDhfJ&_nc_oc=AdkgalCXbGOFP53WttnYi7zd6CFAIuQ_3EaqEvmBvCxjbHFMSDnrRQjFrZujXG8qDvE&_nc_zt=23&_nc_ht=scontent.fflr2-1.fna&_nc_gid=P-pbfhRvz-5v2o46Yz7PDQ&oh=00_AfgB6ABRsEW2moVgTiYiOFbkYb4fDGItkK6zqhSb_XIW1g&oe=6917DB8B" alt="Palloncini">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/482213711_122203757408218278_1153102591793633617_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_ohc=QJ1YpMZ9XhcQ7kNvwFfpctG&_nc_oc=AdmuBE1yoJ82_UJ2yMbgoaC4Ed89KzZJTKDkQzgl5s-GakKFmPiv6AKkQQsr6xt2ErU&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&_nc_gid=FDAIFN6y8f5qScu93d7rHQ&oh=00_Afijswh4vcJiL0TsoNAPYmcjxu9T-q712hsvYlPGjc1m7w&oe=6913E75B" alt="Bomboniere">
-                    <div class="gallery-overlay">
-                    </div>
+                    <img src="https://scontent.fflr2-1.fna.fbcdn.net/v/t51.82787-15/514065758_17909713890169329_1906395851495108165_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_ohc=iuvgQUYiJhwQ7kNvwF6Qf2S&_nc_oc=AdmJ7nQdoufuv5rfwM36hFQ6HaZWZkB04IH2Yz8RfCMTpeOG9N2Hl620YX5hkyj2mJ4&_nc_zt=23&_nc_ht=scontent.fflr2-1.fna&_nc_gid=hPx4i7rm5uWHpgE_yNFnDg&oh=00_Afg5SgajXX5g-pufBzadIRKnnEhFi_vS_V4yGHJsFKoQyA&oe=6917DC0C" alt="Bomboniere">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/480861090_122203757450218278_1660628227770601021_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_ohc=pqWjuGEtKi0Q7kNvwFNhWZc&_nc_oc=Adl4LqaMpQVVwCrucojrhXZuxoR5CvXaHuMbl2dWSVy-7yAiiDWR_OorNpERvhMlD54&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&_nc_gid=qXrYv51ymCCL0ReAkUGTVQ&oh=00_AfhHdqITM9Q-HZLDBI-sO1Im8kgC7vVKfKU6XcugS60NIQ&oe=6913D284" alt="Allestimenti">
-                    <div class="gallery-overlay">
-                       </div>
+                    <img src="https://scontent.fflr2-1.fna.fbcdn.net/v/t51.82787-15/515134774_17909713935169329_8155106224079965634_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=A13uQa99WekQ7kNvwEeqTJ5&_nc_oc=AdniRTnf04aGSdvoIZDowTAg9ictDn5gt2_u9N1B6YOeqNIl_ZxGzwCQKNQWbfyPuTY&_nc_zt=23&_nc_ht=scontent.fflr2-1.fna&_nc_gid=9giDY9d7Td0pEzKVtK_ung&oh=00_AfgPduF531fjEFxW6QgN-UvcsAmkUkMRPedCk8c3PRsoaA&oe=6917DFD0" alt="Allestimenti">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://scontent.fflr2-1.fna.fbcdn.net/v/t51.82787-15/537972347_17915733075169329_5855203393642642164_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=cOkRjwKrkegQ7kNvwF6JW9R&_nc_oc=AdnE2p-FS0cYOZMrXRdVmlXJxEmydjwxMo_aMNmFEXEg-zL0L5f6oJU3m8S3tpEU6Cw&_nc_zt=23&_nc_ht=scontent.fflr2-1.fna&_nc_gid=TWAdTK2gOM-U_Isq6Sjepw&oh=00_AfipwZ-QNMpEyvJ1aNpmSVEVyIhg2so5oUR3ELBnXvyH2w&oe=6917D970" alt="Torta nuziale">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://scontent.fflr2-1.fna.fbcdn.net/v/t39.30808-6/476833632_1151216703460457_6021779690383604318_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_ohc=PpUkMz38qXcQ7kNvwEtTNNF&_nc_oc=AdkYfUOJfdJXvz1SRt_KwhiZPL7biXml4X_wYK0qwSNamj28vdC-eNzsvkdSTFJOfUw&_nc_zt=23&_nc_ht=scontent.fflr2-1.fna&_nc_gid=h8K63rYAoBjEtwEzFaYmDA&oh=00_AfgzSSiTUBkWId4aayl_9GtG2RUFb0M-JXBWLJxZJ-NIOg&oe=6917CE05" alt="Decorazione matrimonio">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://scontent.fflr2-1.fna.fbcdn.net/v/t1.6435-9/177487874_3971430962917931_7226807866854961678_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Yt6F2Tm1weoQ7kNvwGtFSB4&_nc_oc=Admm6V3D-cyYXW0NAOfk6v-uF_IlT9uwh_HmrTV3Gg1ViUDXGiX5RDqrfyQkO06i4Hw&_nc_zt=23&_nc_ht=scontent.fflr2-1.fna&_nc_gid=6RW1_KvHWGJxDkN4gxlD_g&oh=00_AfiJg9OqBJEmeZD9Lx5NpLp0E_zspiyM5USqmfYzSpLjRA&oe=6939697B" alt="Cupcakes">
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- About Section -->
     <section class="about" id="chi-siamo">
@@ -783,24 +754,19 @@
             <div class="section-title">
                 <h2>Chi Siamo</h2>
                 <p>Da diversi anni, <strong>Happy Shop</strong> si è affermata come un punto di riferimento nella preparazione di eventi e matrimoni ad Ancona e in tutta Italia.</p>
-
-<p>In collaborazione con <strong>Martina Catering</strong>, un partner d’eccellenza nel settore della ristorazione e del banqueting, offriamo un servizio completo e raffinato, curato in ogni minimo dettaglio.</p>
-
-<p>Il nostro team appassionato e creativo lavora con dedizione per trasformare i tuoi sogni in realtà, accompagnandoti in ogni fase dell’organizzazione del tuo evento — dalla scelta del tema e della location, alla realizzazione di <strong>torte personalizzate</strong>, decorazioni su misura e allestimenti scenografici che lasciano il segno.</p>
-
-<p>Grazie alla collaborazione con <strong>Martina Catering</strong>, possiamo garantire un’esperienza gastronomica di altissimo livello, capace di deliziare ogni palato e rendere il tuo giorno ancora più speciale.</p>
-
-<p>Il nostro approccio è completamente personalizzato: ascoltiamo i tuoi desideri, il tuo stile e la tua storia per creare un evento che ti rappresenti davvero — unico, elegante e indimenticabile.</p>
-
+                <p>In collaborazione con <strong>Martina Catering</strong>, un partner d'eccellenza nel settore della ristorazione e del banqueting, offriamo un servizio completo e raffinato, curato in ogni minimo dettaglio.</p>
+                <p>Il nostro team appassionato e creativo lavora con dedizione per trasformare i tuoi sogni in realtà, accompagnandoti in ogni fase dell'organizzazione del tuo evento — dalla scelta del tema e della location, alla realizzazione di <strong>torte personalizzate</strong>, decorazioni su misura e allestimenti scenografici che lasciano il segno.</p>
+                <p>Grazie alla collaborazione con <strong>Martina Catering</strong>, possiamo garantire un'esperienza gastronomica di altissimo livello, capace di deliziare ogni palato e rendere il tuo giorno ancora più speciale.</p>
+                <p>Il nostro approccio è completamente personalizzato: ascoltiamo i tuoi desideri, il tuo stile e la tua storia per creare un evento che ti rappresenti davvero — unico, elegante e indimenticabile.</p>
             </div>
             <div class="about-content">
                 <div class="about-text">
-
                     <a href="#contatti" class="btn">Contattaci per un preventivo</a>
                 </div>
                 <div class="about-image">
-                    <img src="logo.png" alt="Il nostro team">
+                    <img src="logob.png" width="100px">
                 </div>
+                
             </div>
         </div>
     </section>
@@ -824,9 +790,9 @@
                     <div class="contact-info-item">
                         <div class="contact-icon">📞</div>
                         <div>
-                            <h3>Telefono Happy Shop  </h3>
+                            <h3>Telefono Happy Shop</h3>
                             <p>+39 3290474246</p>
-                              <h3>Telefono Martina catering </h3>
+                            <h3>Telefono Martina catering</h3>
                             <p>+39 3517155795</p>
                         </div>
                     </div>
@@ -901,9 +867,9 @@
                     <h3>Happy Shop</h3>
                     <div class="social-links">
                         <a href="https://www.facebook.com/HappyShopAncona" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                          <a href="https://www.instagram.com/happyshop_vivereacolori?igsh=MXB0dzZ1cXgzNWZn" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/happyshop_vivereacolori" class="social-link"><i class="fab fa-instagram"></i></a>
                     </div>
-                    <h3> martina catering </h3>
+                    <h3>Martina Catering</h3>
                     <div class="social-links">
                         <a href="https://www.facebook.com/profile.php?id=61556548363993" class="social-link"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/martina.catering_ancona/" class="social-link"><i class="fab fa-instagram"></i></a>
@@ -945,26 +911,26 @@
             }, 1500);
         });
 
-        // Menu mobile
+        // Mobile Menu
         document.querySelector('.mobile-menu').addEventListener('click', function() {
             document.querySelector('nav ul').classList.toggle('active');
         });
 
-        // Fermer le menu mobile en cliquant sur un lien
+        // Close mobile menu when clicking on links
         document.querySelectorAll('nav ul li a').forEach(link => {
             link.addEventListener('click', function() {
                 document.querySelector('nav ul').classList.remove('active');
             });
         });
 
-        // Formulaire de contact
+        // Contact Form
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             alert('Grazie per il tuo messaggio! Ti contatteremo presto.');
             this.reset();
         });
 
-        // Smooth scroll
+        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -982,7 +948,7 @@
             });
         });
 
-        // Header scroll effect
+        // Header Scroll Effect
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
