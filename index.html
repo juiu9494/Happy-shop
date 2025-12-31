@@ -14,12 +14,12 @@
         }
 
         :root {
-            --primary-color: #f8b4d9;
-            --secondary-color: #6a5acd;
+            --primary-color: #ff1493;
+            --secondary-color: #8a2be2;
             --accent-color: #ffd700;
-            --text-color: #333;
-            --light-color: #f9f9f9;
-            --dark-color: #222;
+            --text-color: #222;
+            --light-color: #fff5f9;
+            --dark-color: #1a1a1a;
         }
 
         body {
@@ -51,47 +51,50 @@
 
         .btn {
             display: inline-block;
-            background-color: var(--primary-color);
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
             color: white;
-            padding: 12px 25px;
+            padding: 15px 30px;
             border: none;
             border-radius: 30px;
             text-decoration: none;
             font-weight: bold;
+            font-size: 1.1rem;
             transition: all 0.3s ease;
             cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.3);
         }
 
         .btn:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 20, 147, 0.5);
         }
 
         .btn-whatsapp {
-            background-color: #25D366;
+            background: linear-gradient(45deg, #25D366, #128C7E);
             color: white;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            padding: 15px 30px;
-            font-size: 18px;
-            margin-top: 20px;
+            gap: 12px;
+            padding: 18px 35px;
+            font-size: 1.2rem;
+            margin-top: 25px;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
         }
 
         .btn-whatsapp:hover {
-            background-color: #128C7E;
+            background: linear-gradient(45deg, #1EBE5D, #0D7C68);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.6);
         }
 
-        /* Loader Stilizzato */
+        /* Loader Stilizzato e Forte */
         #loader {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #f8b4d9 0%, #6a5acd 100%);
+            background: linear-gradient(135deg, #ff1493 0%, #8a2be2 50%, #ffd700 100%);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -107,8 +110,8 @@
 
         .loader-container {
             position: relative;
-            width: 300px;
-            height: 300px;
+            width: 350px;
+            height: 350px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -120,25 +123,26 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 40px;
-            margin-bottom: 40px;
+            gap: 50px;
+            margin-bottom: 50px;
         }
 
         .loader-logo {
-            width: 150px;
-            height: 150px;
+            width: 180px;
+            height: 180px;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            animation: float 3s ease-in-out infinite;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 25px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            animation: float 2.5s ease-in-out infinite;
+            border: 5px solid white;
         }
 
         .loader-logo:nth-child(2) {
-            animation-delay: 0.5s;
+            animation-delay: 0.4s;
         }
 
         .loader-logo img {
@@ -148,45 +152,63 @@
         }
 
         .loader-text {
-            font-size: 28px;
+            font-size: 32px;
             color: white;
-            font-weight: bold;
+            font-weight: 800;
             text-align: center;
-            margin-top: 20px;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            letter-spacing: 1px;
+            margin-top: 25px;
+            text-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .loader-dots {
             display: flex;
-            gap: 10px;
-            margin-top: 20px;
+            gap: 15px;
+            margin-top: 25px;
         }
 
         .loader-dot {
-            width: 15px;
-            height: 15px;
+            width: 20px;
+            height: 20px;
             background-color: white;
             border-radius: 50%;
-            animation: pulse 1.5s infinite ease-in-out;
+            animation: pulse 1.2s infinite ease-in-out;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
         }
 
+        .loader-dot:nth-child(1) {
+            background-color: #ff1493;
+        }
         .loader-dot:nth-child(2) {
+            background-color: #8a2be2;
             animation-delay: 0.2s;
         }
-
         .loader-dot:nth-child(3) {
+            background-color: #ffd700;
             animation-delay: 0.4s;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg); 
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            }
+            50% { 
+                transform: translateY(-25px) rotate(5deg); 
+                box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+            }
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 0.3; transform: scale(0.8); }
-            50% { opacity: 1; transform: scale(1); }
+            0%, 100% { 
+                opacity: 0.3; 
+                transform: scale(0.7); 
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.2); 
+            }
         }
 
         .loader-ornament {
@@ -202,22 +224,24 @@
         .loader-ornament::after {
             content: '';
             position: absolute;
-            width: 150px;
-            height: 150px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
-            border: 3px dashed rgba(255, 255, 255, 0.3);
-            animation: spin 20s linear infinite;
+            border: 4px solid rgba(255, 255, 255, 0.4);
+            animation: spin 15s linear infinite;
         }
 
         .loader-ornament::before {
-            top: -50px;
-            left: -50px;
+            top: -60px;
+            left: -60px;
             animation-direction: reverse;
+            border-color: rgba(255, 20, 147, 0.6);
         }
 
         .loader-ornament::after {
-            bottom: -50px;
-            right: -50px;
+            bottom: -60px;
+            right: -60px;
+            border-color: rgba(138, 43, 226, 0.6);
         }
 
         @keyframes spin {
@@ -225,10 +249,24 @@
             100% { transform: rotate(360deg); }
         }
 
+        .loader-sparkle {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 50%;
+            animation: sparkle 2s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
         /* Header */
         header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(90deg, #ff1493, #8a2be2);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
             position: fixed;
             width: 100%;
             z-index: 1000;
@@ -244,12 +282,13 @@
 
         .header-logos {
             display: flex;
-            gap: 20px;
+            gap: 25px;
             align-items: center;
         }
 
         .header-logos img {
-            height: 120px;
+            height: 130px;
+            filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.2));
         }
 
         nav ul {
@@ -258,31 +297,37 @@
         }
 
         nav ul li {
-            margin-left: 25px;
+            margin-left: 30px;
         }
 
         nav ul li a {
             text-decoration: none;
-            color: var(--text-color);
-            font-weight: 500;
-            transition: color 0.3s ease;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border-radius: 20px;
         }
 
         nav ul li a:hover {
-            color: var(--primary-color);
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
         }
 
         .mobile-menu {
             display: none;
-            font-size: 24px;
+            font-size: 28px;
             cursor: pointer;
+            color: white;
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('baniere.jpg');
+            background: linear-gradient(rgba(138, 43, 226, 0.8), rgba(255, 20, 147, 0.8)), url('baniere.jpg');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             height: 100vh;
             display: flex;
             align-items: center;
@@ -291,99 +336,109 @@
         }
 
         .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
+            font-size: 4rem;
+            margin-bottom: 25px;
             color: white;
+            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
         }
 
         .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            max-width: 700px;
+            font-size: 1.4rem;
+            margin-bottom: 35px;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            font-weight: 300;
         }
 
         /* Services Section */
         .services {
-            background-color: white;
+            background: linear-gradient(135deg, #fff5f9 0%, #f0e6ff 100%);
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
 
         .section-title h2 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             position: relative;
             display: inline-block;
+            color: var(--secondary-color);
         }
 
         .section-title h2::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: var(--primary-color);
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 5px;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 35px;
         }
 
         .service-card {
-            background-color: var(--light-color);
-            border-radius: 10px;
+            background: white;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.1);
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(138, 43, 226, 0.2);
+            border-color: var(--primary-color);
         }
 
         .service-icon {
-            height: 150px;
-            background-color: var(--primary-color);
+            height: 180px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 40px;
+            font-size: 60px;
         }
 
         .service-content {
-            padding: 20px;
+            padding: 25px;
         }
 
         .service-content h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
         }
 
         /* Gallery Section */
         .gallery {
-            background-color: var(--light-color);
+            background: linear-gradient(135deg, #f0e6ff 0%, #fff5f9 100%);
         }
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
         }
 
         .gallery-item {
-            height: 250px;
-            border-radius: 10px;
+            height: 280px;
+            border-radius: 15px;
             overflow: hidden;
             position: relative;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
         .gallery-item img {
@@ -394,7 +449,7 @@
         }
 
         .gallery-item:hover img {
-            transform: scale(1.1);
+            transform: scale(1.15);
         }
 
         .gallery-overlay {
@@ -403,7 +458,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: linear-gradient(rgba(138, 43, 226, 0.8), rgba(255, 20, 147, 0.8));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -417,13 +472,13 @@
 
         /* About Section */
         .about {
-            background-color: white;
+            background: white;
         }
 
         .about-content {
             display: flex;
             align-items: center;
-            gap: 50px;
+            gap: 60px;
         }
 
         .about-text {
@@ -432,9 +487,11 @@
 
         .about-image {
             flex: 1;
-            height: 400px;
-            border-radius: 10px;
+            height: 450px;
+            border-radius: 20px;
             overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            border: 5px solid white;
         }
 
         .about-image img {
@@ -445,102 +502,132 @@
 
         /* Contact Section */
         .contact {
-            background-color: var(--light-color);
+            background: linear-gradient(135deg, #fff5f9 0%, #f0e6ff 100%);
         }
 
         .contact-container {
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 40px;
             align-items: center;
             text-align: center;
         }
 
         .contact-info {
             width: 100%;
-            max-width: 600px;
+            max-width: 700px;
         }
 
         .contact-info-item {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             justify-content: center;
         }
 
         .contact-icon {
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 15px;
+            margin-right: 20px;
             flex-shrink: 0;
+            font-size: 24px;
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
         }
 
         /* WhatsApp Booking Section */
         .whatsapp-booking {
-            background-color: white;
-            padding: 60px 0;
+            background: linear-gradient(135deg, #ff1493 0%, #8a2be2 100%);
+            padding: 80px 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .whatsapp-booking::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: floatBackground 20s linear infinite;
+        }
+
+        @keyframes floatBackground {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .whatsapp-box {
-            background: linear-gradient(135deg, #f8b4d9 0%, #6a5acd 100%);
-            border-radius: 20px;
-            padding: 60px 40px;
-            color: white;
-            max-width: 800px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 70px 50px;
+            color: var(--dark-color);
+            max-width: 850px;
             margin: 0 auto;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+            border: 5px solid white;
         }
 
         .whatsapp-box h2 {
-            color: white;
-            font-size: 2.5rem;
-            margin-bottom: 15px;
+            color: var(--secondary-color);
+            font-size: 3rem;
+            margin-bottom: 20px;
         }
 
         .whatsapp-box p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            color: #555;
         }
 
         .whatsapp-features {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 30px;
-            margin: 40px 0;
+            gap: 35px;
+            margin: 50px 0;
         }
 
         .whatsapp-feature {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 20px;
-            width: 200px;
-            backdrop-filter: blur(10px);
+            background: linear-gradient(135deg, #fff5f9, #f0e6ff);
+            border-radius: 20px;
+            padding: 25px;
+            width: 220px;
+            border: 3px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(138, 43, 226, 0.2);
         }
 
         .whatsapp-feature i {
-            font-size: 40px;
-            margin-bottom: 15px;
-            color: white;
+            font-size: 50px;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
         }
 
         .whatsapp-feature h4 {
-            color: white;
-            font-size: 1.1rem;
+            color: var(--secondary-color);
+            font-size: 1.3rem;
         }
 
         /* Map Section */
         .map-section {
             padding: 0;
-            height: 500px;
+            height: 550px;
         }
 
         .map-container {
@@ -556,20 +643,20 @@
 
         /* Footer */
         footer {
-            background-color: var(--dark-color);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a1a3a 100%);
             color: white;
-            padding: 50px 0 20px;
+            padding: 70px 0 30px;
         }
 
         .footer-content {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
         .footer-column {
             flex: 1;
-            margin-right: 30px;
+            margin-right: 40px;
         }
 
         .footer-column:last-child {
@@ -578,8 +665,20 @@
 
         .footer-column h3 {
             color: white;
-            margin-bottom: 20px;
-            font-size: 1.2rem;
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
         }
 
         .footer-links {
@@ -587,45 +686,49 @@
         }
 
         .footer-links li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .footer-links a {
-            color: #ccc;
+            color: #ddd;
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            display: inline-block;
         }
 
         .footer-links a:hover {
             color: var(--primary-color);
+            transform: translateX(5px);
         }
 
         .social-links {
             display: flex;
-            gap: 15px;
+            gap: 20px;
         }
 
         .social-link {
             display: inline-block;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             border-radius: 50%;
             text-align: center;
-            line-height: 40px;
+            line-height: 50px;
             color: white;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
+            font-size: 20px;
         }
 
         .social-link:hover {
-            background-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
         }
 
         .copyright {
             text-align: center;
-            padding-top: 20px;
+            padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: #aaa;
         }
 
@@ -639,10 +742,13 @@
             }
             .footer-column {
                 flex: 1 0 45%;
-                margin-bottom: 30px;
+                margin-bottom: 40px;
             }
             .whatsapp-features {
-                gap: 20px;
+                gap: 25px;
+            }
+            .hero-content h1 {
+                font-size: 3rem;
             }
         }
 
@@ -656,17 +762,22 @@
                 left: -100%;
                 width: 100%;
                 height: calc(100vh - 80px);
-                background-color: white;
+                background: linear-gradient(135deg, #ff1493, #8a2be2);
                 flex-direction: column;
                 align-items: center;
-                padding-top: 50px;
+                padding-top: 60px;
                 transition: left 0.3s ease;
+                z-index: 999;
             }
             nav ul.active {
                 left: 0;
             }
             nav ul li {
-                margin: 15px 0;
+                margin: 20px 0;
+            }
+            nav ul li a {
+                font-size: 1.3rem;
+                padding: 12px 25px;
             }
             .hero-content h1 {
                 font-size: 2.5rem;
@@ -677,24 +788,27 @@
             }
             .loader-logos {
                 flex-direction: column;
-                gap: 20px;
+                gap: 30px;
             }
             .loader-logo {
-                width: 120px;
-                height: 120px;
+                width: 150px;
+                height: 150px;
             }
             .header-logos {
                 flex-direction: column;
-                gap: 10px;
+                gap: 15px;
             }
             .header-logos img {
-                height: 80px;
+                height: 100px;
             }
             .whatsapp-box {
-                padding: 40px 20px;
+                padding: 50px 25px;
             }
             .whatsapp-box h2 {
-                font-size: 2rem;
+                font-size: 2.2rem;
+            }
+            .section-title h2 {
+                font-size: 2.2rem;
             }
         }
     </style>
@@ -713,7 +827,7 @@
                 </div>
             </div>
         </div>
-        <div class="loader-text">Preparando la magia del tuo evento...</div>
+        <div class="loader-text">Preparando la Magia del tuo Evento</div>
         <div class="loader-dots">
             <div class="loader-dot"></div>
             <div class="loader-dot"></div>
@@ -744,9 +858,9 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container hero-content">
-            <h1>Creiamo insieme il tuo evento indimenticabile</h1>
-            <p>Specialisti nella preparazione di matrimoni ed eventi ad Ancona e in tutta Italia. Dalla piccola pasticceria agli allestimenti completi, realizziamo i tuoi sogni.</p>
-            <a href="#prenota" class="btn">Prenota il tuo evento</a>
+            <h1>CREIAMO INSIEME IL TUO EVENTO INDIMENTICABILE</h1>
+            <p>Specialisti nella preparazione di matrimoni ed eventi ad Ancona e in tutta Italia. Dalla piccola pasticceria agli allestimenti completi, realizziamo i tuoi sogni con passione e creatività.</p>
+            <a href="#prenota" class="btn">PRENOTA IL TUO EVENTO</a>
         </div>
     </section>
 
@@ -754,8 +868,8 @@
     <section class="services" id="servizi">
         <div class="container">
             <div class="section-title">
-                <h2>I Nostri Servizi</h2>
-                <p>Scopri tutti i servizi che offriamo per rendere il tuo evento unico</p>
+                <h2>I NOSTRI SERVIZI</h2>
+                <p>Scopri tutti i servizi che offriamo per rendere il tuo evento unico e memorabile</p>
             </div>
             <div class="services-grid">
                 <div class="service-card">
@@ -825,78 +939,36 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section class="gallery" id="galleria">
+    <!-- WhatsApp Booking Section -->
+    <section class="whatsapp-booking" id="prenota">
         <div class="container">
-            <div class="section-title">
-                <h2>La Nostra Galleria</h2>
-                <p>Alcune delle nostre realizzazioni</p>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="1img.jpg" alt="Torta nuziale">
+            <div class="whatsapp-box">
+                <h2>PRENOTA IL TUO EVENTO SU WHATSAPP</h2>
+                <p>Contattaci direttamente su WhatsApp per discutere dei dettagli del tuo evento, ricevere un preventivo personalizzato e prenotare i nostri servizi in modo rapido e semplice.</p>
+                
+                <div class="whatsapp-features">
+                    <div class="whatsapp-feature">
+                        <i class="fas fa-bolt"></i>
+                        <h4>RISPOSTA IMMEDIATA</h4>
+                        <p>Rispondiamo entro pochi minuti</p>
+                    </div>
+                    <div class="whatsapp-feature">
+                        <i class="fas fa-comment-dots"></i>
+                        <h4>CHAT DIRETTA</h4>
+                        <p>Comunicazione semplice e immediata</p>
+                    </div>
+                    <div class="whatsapp-feature">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h4>PRENOTAZIONE ISTANTANEA</h4>
+                        <p>Conferma immediata della disponibilità</p>
+                    </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="2img.jpg" alt="Decorazione matrimonio">
-                </div>
-                <div class="gallery-item">
-                    <img src="3img.jpg" alt="Cupcakes">
-                </div>
-                <div class="gallery-item">
-                    <img src="4img.jpg" alt="Palloncini">
-                </div>
-                <div class="gallery-item">
-                    <img src="5img.jpg" alt="Bomboniere">
-                </div>
-                <div class="gallery-item">
-                    <img src="6img.jpg" alt="Allestimenti">
-                </div>
-                <div class="gallery-item">
-                    <img src="7img.jpg" alt="Torta nuziale">
-                </div>
-                <div class="gallery-item">
-                    <img src="8img.jpg" alt="Decorazione matrimonio">
-                </div>
-                <div class="gallery-item">
-                    <img src="9img.jpg" alt="Cupcakes">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section 2 -->
-    <section class="gallery" id="galleria">
-        <div class="container">
-            <div class="section-title">
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://scontent.fflr2-1.fna.fbcdn.net/v/t51.82787-15/515058028_17909713860169329_6502075394756082758_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=f7FDxRA74HAQ7kNvwH8zQDU&_nc_oc=Adm9XSheusUP7vP7x-O4D3vc31P3ypJtmHzjpp1PmuPeF_F0QUnyKfemK_bRBn8nENw&_nc_zt=23&_nc_ht=scontent.fflr2-1.fna&_nc_gid=3dRvehSpZbUgjweLpInrYg&oh=00_AfhmpwwyOoHknPoVlpAb7jaTgiFwrxwNZGxmXxBS7ggEUQ&oe=6917DFE5" alt="Torta nuziale">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://scontent.fflr2-1.fna.fbcdn.net/v/t51.82787-15/514611040_17909713926169329_4854971556097846228_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=OU_zp1J9wnQQ7kNvwFwHTmw&_nc_oc=AdklH-eg10xcqQQIZBEzqKx3LeTzy3LEywixo1BAXi_kNzl6Fz2zGETWXY4rl0f1Fpk&_nc_zt=23&_nc_ht=scontent.fflr2-1.fna&_nc_gid=OlCxFlQ-zqZEQp_hxR1DgA&oh=00_Afi5dbrKF2miwPS3O2nr8uHJJ61xeOE4wapeAN25XldWdw&oe=6917E6D2" alt="Decorazione matrimonio">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://scontent.fflr2-1.fna.fbcdn.net/v/t51.82787-15/520805916_17911446780169329_7794584404412818378_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=OdGZ_vZ4aOQQ7kNvwF4IBPD&_nc_oc=Adn-_60-NLyymufVpa_fODbGQvyxCFuECwfTK3t2DAMfIae8wfxsJRrCGzjBDLnDFqg&_nc_zt=23&_nc_ht=scontent.fflr2-1.fna&_nc_gid=haYYewwejy9FKJSU8oiPJA&oh=00_AfjBXeMfbPzWFI-cYFnlPdOP2v4mIW1fUZJc7yVNW2oRqA&oe=6917E9D6" alt="Cupcakes">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://scontent.fflr2-1.fna.fbcdn.net/v/t51.82787-15/555050160_17919947775169329_5208290062191044718_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=wpsjIh_GjQ8Q7kNvwElDhfJ&_nc_oc=AdkgalCXbGOFP53WttnYi7zd6CFAIuQ_3EaqEvmBvCxjbHFMSDnrRQjFrZujXG8qDvE&_nc_zt=23&_nc_ht=scontent.fflr2-1.fna&_nc_gid=P-pbfhRvz-5v2o46Yz7PDQ&oh=00_AfgB6ABRsEW2moVgTiYiOFbkYb4fDGItkK6zqhSb_XIW1g&oe=6917DB8B" alt="Palloncini">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://scontent.fflr2-1.fna.fbcdn.net/v/t51.82787-15/514065758_17909713890169329_1906395851495108165_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_ohc=iuvgQUYiJhwQ7kNvwF6Qf2S&_nc_oc=AdmJ7nQdoufuv5rfwM36hFQ6HaZWZkB04IH2Yz8RfCMTpeOG9N2Hl620YX5hkyj2mJ4&_nc_zt=23&_nc_ht=scontent.fflr2-1.fna&_nc_gid=hPx4i7rm5uWHpgE_yNFnDg&oh=00_Afg5SgajXX5g-pufBzadIRKnnEhFi_vS_V4yGHJsFKoQyA&oe=6917DC0C" alt="Bomboniere">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://scontent.fflr2-1.fna.fbcdn.net/v/t51.82787-15/515134774_17909713935169329_8155106224079965634_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=A13uQa99WekQ7kNvwEeqTJ5&_nc_oc=AdniRTnf04aGSdvoIZDowTAg9ictDn5gt2_u9N1B6YOeqNIl_ZxGzwCQKNQWbfyPuTY&_nc_zt=23&_nc_ht=scontent.fflr2-1.fna&_nc_gid=9giDY9d7Td0pEzKVtK_ung&oh=00_AfgPduF531fjEFxW6QgN-UvcsAmkUkMRPedCk8c3PRsoaA&oe=6917DFD0" alt="Allestimenti">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://scontent.fflr2-1.fna.fbcdn.net/v/t51.82787-15/537972347_17915733075169329_5855203393642642164_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=cOkRjwKrkegQ7kNvwF6JW9R&_nc_oc=AdnE2p-FS0cYOZMrXRdVmlXJxEmydjwxMo_aMNmFEXEg-zL0L5f6oJU3m8S3tpEU6Cw&_nc_zt=23&_nc_ht=scontent.fflr2-1.fna&_nc_gid=TWAdTK2gOM-U_Isq6Sjepw&oh=00_AfipwZ-QNMpEyvJ1aNpmSVEVyIhg2so5oUR3ELBnXvyH2w&oe=6917D970" alt="Torta nuziale">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://scontent.fflr2-1.fna.fbcdn.net/v/t39.30808-6/476833632_1151216703460457_6021779690383604318_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_ohc=PpUkMz38qXcQ7kNvwEtTNNF&_nc_oc=AdkYfUOJfdJXvz1SRt_KwhiZPL7biXml4X_wYK0qwSNamj28vdC-eNzsvkdSTFJOfUw&_nc_zt=23&_nc_ht=scontent.fflr2-1.fna&_nc_gid=h8K63rYAoBjEtwEzFaYmDA&oh=00_AfgzSSiTUBkWId4aayl_9GtG2RUFb0M-JXBWLJxZJ-NIOg&oe=6917CE05" alt="Decorazione matrimonio">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://scontent.fflr2-1.fna.fbcdn.net/v/t1.6435-9/177487874_3971430962917931_7226807866854961678_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Yt6F2Tm1weoQ7kNvwGtFSB4&_nc_oc=Admm6V3D-cyYXW0NAOfk6v-uF_IlT9uwh_HmrTV3Gg1ViUDXGiX5RDqrfyQkO06i4Hw&_nc_zt=23&_nc_ht=scontent.fflr2-1.fna&_nc_gid=6RW1_KvHWGJxDkN4gxlD_g&oh=00_AfiJg9OqBJEmeZD9Lx5NpLp0E_zspiyM5USqmfYzSpLjRA&oe=6939697B" alt="Cupcakes">
-                </div>
+                
+                <a href="https://wa.me/393290474246?text=Ciao%20Happy%20Shop!%20Vorrei%20informazioni%20per%20prenotare%20un%20evento.%20Mi%20piacerebbe%20discutere%20i%20dettagli." class="btn btn-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i> PRENOTA SU WHATSAPP
+                </a>
+                
+                <p style="margin-top: 25px; font-size: 1.1rem; font-weight: 600; color: var(--secondary-color);">Oppure chiamaci direttamente: <strong style="color: var(--primary-color);">+39 329 047 4246</strong></p>
             </div>
         </div>
     </section>
@@ -905,54 +977,46 @@
     <section class="about" id="chi-siamo">
         <div class="container">
             <div class="section-title">
-                <h2>Chi Siamo</h2>
-                <p>Da diversi anni, <strong>Happy Shop</strong> si è affermata come un punto di riferimento nella preparazione di eventi e matrimoni ad Ancona e in tutta Italia.</p>
-                <p>In collaborazione con <strong>Martina Catering</strong>, un partner d'eccellenza nel settore della ristorazione e del banqueting, offriamo un servizio completo e raffinato, curato in ogni minimo dettaglio.</p>
-                <p>Il nostro team appassionato e creativo lavora con dedizione per trasformare i tuoi sogni in realtà, accompagnandoti in ogni fase dell'organizzazione del tuo evento — dalla scelta del tema e della location, alla realizzazione di <strong>torte personalizzate</strong>, decorazioni su misura e allestimenti scenografici che lasciano il segno.</p>
-                <p>Grazie alla collaborazione con <strong>Martina Catering</strong>, possiamo garantire un'esperienza gastronomica di altissimo livello, capace di deliziare ogni palato e rendere il tuo giorno ancora più speciale.</p>
-                <p>Il nostro approccio è completamente personalizzato: ascoltiamo i tuoi desideri, il tuo stile e la tua storia per creare un evento che ti rappresenti davvero — unico, elegante e indimenticabile.</p>
+                <h2>CHI SIAMO</h2>
+                <p>Da diversi anni, <strong style="color: var(--primary-color);">Happy Shop</strong> si è affermata come un punto di riferimento nella preparazione di eventi e matrimoni ad Ancona e in tutta Italia.</p>
+                <p>In collaborazione con <strong style="color: var(--secondary-color);">Martina Catering</strong>, un partner d'eccellenza nel settore della ristorazione e del banqueting, offriamo un servizio completo e raffinato, curato in ogni minimo dettaglio.</p>
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <a href="#prenota" class="btn">Prenota il tuo evento</a>
+                    <h3 style="color: var(--primary-color); margin-bottom: 20px;">La nostra filosofia</h3>
+                    <p>Il nostro team appassionato e creativo lavora con dedizione per trasformare i tuoi sogni in realtà, accompagnandoti in ogni fase dell'organizzazione del tuo evento — dalla scelta del tema e della location, alla realizzazione di <strong>torte personalizzate</strong>, decorazioni su misura e allestimenti scenografici che lasciano il segno.</p>
+                    <p>Grazie alla collaborazione con <strong>Martina Catering</strong>, possiamo garantire un'esperienza gastronomica di altissimo livello, capace di deliziare ogni palato e rendere il tuo giorno ancora più speciale.</p>
+                    <p>Il nostro approccio è completamente personalizzato: ascoltiamo i tuoi desideri, il tuo stile e la tua storia per creare un evento che ti rappresenti davvero — unico, elegante e indimenticabile.</p>
+                    <a href="#prenota" class="btn" style="margin-top: 30px;">PRENOTA UNA CONSULENZA</a>
                 </div>
                 <div class="about-image">
-                    <img src="logob.png" width="100px">
+                    <img src="logob.png" alt="Martina Catering">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- WhatsApp Booking Section -->
-    <section class="whatsapp-booking" id="prenota">
+    <!-- Gallery Section -->
+    <section class="gallery" id="galleria">
         <div class="container">
-            <div class="whatsapp-box">
-                <h2>Prenota il tuo evento su WhatsApp</h2>
-                <p>Contattaci direttamente su WhatsApp per discutere dei dettagli del tuo evento, ricevere un preventivo personalizzato e prenotare i nostri servizi.</p>
-                
-                <div class="whatsapp-features">
-                    <div class="whatsapp-feature">
-                        <i class="fas fa-clock"></i>
-                        <h4>Risposta Rapida</h4>
-                        <p>Rispondiamo entro poche ore</p>
-                    </div>
-                    <div class="whatsapp-feature">
-                        <i class="fas fa-comments"></i>
-                        <h4>Chat Diretta</h4>
-                        <p>Comunicazione semplice e diretta</p>
-                    </div>
-                    <div class="whatsapp-feature">
-                        <i class="fas fa-calendar-check"></i>
-                        <h4>Prenotazione Istantanea</h4>
-                        <p>Conferma immediata della disponibilità</p>
-                    </div>
+            <div class="section-title">
+                <h2>LA NOSTRA GALLERIA</h2>
+                <p>Alcune delle nostre realizzazioni più belle</p>
+            </div>
+            <div class="gallery-grid">
+                <!-- Le tue immagini della galleria qui -->
+                <div class="gallery-item">
+                    <img src="1img.jpg" alt="Torta nuziale">
+                    <div class="gallery-overlay"></div>
                 </div>
-                
-                <a href="https://wa.me/393290474246?text=Ciao%20Happy%20Shop!%20Vorrei%20informazioni%20per%20prenotare%20un%20evento." class="btn btn-whatsapp" target="_blank">
-                    <i class="fab fa-whatsapp"></i> Prenota su WhatsApp
-                </a>
-                
-                <p style="margin-top: 20px; font-size: 1rem;">Oppure chiamaci al: +39 329 047 4246</p>
+                <div class="gallery-item">
+                    <img src="2img.jpg" alt="Decorazione matrimonio">
+                    <div class="gallery-overlay"></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="3img.jpg" alt="Cupcakes">
+                    <div class="gallery-overlay"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -961,7 +1025,7 @@
     <section class="contact" id="contatti">
         <div class="container">
             <div class="section-title">
-                <h2>Contattaci</h2>
+                <h2>CONTATTACI</h2>
                 <p>Non esitare a contattarci per discutere del tuo progetto</p>
             </div>
             <div class="contact-container">
@@ -977,9 +1041,9 @@
                         <div class="contact-icon">📞</div>
                         <div>
                             <h3>Telefono Happy Shop</h3>
-                            <p>+39 3290474246</p>
-                            <h3>Telefono Martina catering</h3>
-                            <p>+39 3517155795</p>
+                            <p style="font-weight: 600; color: var(--primary-color);">+39 3290474246</p>
+                            <h3 style="margin-top: 15px;">Telefono Martina catering</h3>
+                            <p style="font-weight: 600; color: var(--secondary-color);">+39 3517155795</p>
                         </div>
                     </div>
                     <div class="contact-info-item">
@@ -995,6 +1059,7 @@
                             <h3>Orari di apertura</h3>
                             <p>Lun - Ven: 9:00 - 19:00</p>
                             <p>Sab: 9:00 - 13:00</p>
+                            <p style="margin-top: 10px; color: var(--primary-color); font-weight: 600;">Su appuntamento anche la domenica</p>
                         </div>
                     </div>
                 </div>
@@ -1019,7 +1084,7 @@
                         <a href="https://www.facebook.com/HappyShopAncona" class="social-link"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/happyshop_vivereacolori" class="social-link"><i class="fab fa-instagram"></i></a>
                     </div>
-                    <h3>Martina Catering</h3>
+                    <h3 style="margin-top: 30px;">Martina Catering</h3>
                     <div class="social-links">
                         <a href="https://www.facebook.com/profile.php?id=61556548363993" class="social-link"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/martina.catering_ancona/" class="social-link"><i class="fab fa-instagram"></i></a>
@@ -1053,23 +1118,29 @@
     </footer>
 
     <script>
-        // Page Loader
+        // Page Loader con animazioni migliorate
         window.addEventListener('load', function() {
             const loader = document.getElementById('loader');
             setTimeout(function() {
                 loader.classList.add('fade-out');
-            }, 2000);
+                // Rimuove il loader dal DOM dopo l'animazione
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 800);
+            }, 2500);
         });
 
         // Mobile Menu
         document.querySelector('.mobile-menu').addEventListener('click', function() {
             document.querySelector('nav ul').classList.toggle('active');
+            this.classList.toggle('active');
         });
 
         // Close mobile menu when clicking on links
         document.querySelectorAll('nav ul li a').forEach(link => {
             link.addEventListener('click', function() {
                 document.querySelector('nav ul').classList.remove('active');
+                document.querySelector('.mobile-menu').classList.remove('active');
             });
         });
 
@@ -1096,17 +1167,39 @@
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
                 header.style.padding = '5px 0';
-                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.2)';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.3)';
             } else {
                 header.style.padding = '15px 0';
-                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.2)';
             }
         });
 
         // WhatsApp Click Tracking
         document.querySelector('.btn-whatsapp').addEventListener('click', function() {
             console.log('WhatsApp booking button clicked');
-            // Qui puoi aggiungere codice per tracciare le conversioni, ad esempio Google Analytics
+            // Puoi aggiungere qui Google Analytics o altri tracker
+        });
+
+        // Aggiunge classe active al link corrente
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav ul li a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
         });
     </script>
 </body>
