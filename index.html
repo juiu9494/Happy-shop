@@ -68,20 +68,36 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        /* Loader */
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px 30px;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+        }
+
+        /* Loader Stilizzato */
         #loader {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: white;
+            background: linear-gradient(135deg, #f8b4d9 0%, #6a5acd 100%);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            transition: opacity 0.5s, visibility 0.5s;
+            transition: opacity 0.8s, visibility 0.8s;
         }
 
         #loader.fade-out {
@@ -89,20 +105,40 @@
             visibility: hidden;
         }
 
-        .loader-logos {
+        .loader-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 30px;
-            margin-bottom: 20px;
+        }
+
+        .loader-logos {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 40px;
         }
 
         .loader-logo {
-            width: 120px;
-            height: 120px;
+            width: 150px;
+            height: 150px;
             display: flex;
             justify-content: center;
             align-items: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .loader-logo:nth-child(2) {
+            animation-delay: 0.5s;
         }
 
         .loader-logo img {
@@ -112,15 +148,81 @@
         }
 
         .loader-text {
-            font-size: 24px;
-            color: var(--secondary-color);
+            font-size: 28px;
+            color: white;
             font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            letter-spacing: 1px;
+        }
+
+        .loader-dots {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .loader-dot {
+            width: 15px;
+            height: 15px;
+            background-color: white;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+
+        .loader-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .loader-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
 
         @keyframes pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(248, 180, 217, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 20px rgba(248, 180, 217, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(248, 180, 217, 0); }
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        .loader-ornament {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .loader-ornament::before,
+        .loader-ornament::after {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px dashed rgba(255, 255, 255, 0.3);
+            animation: spin 20s linear infinite;
+        }
+
+        .loader-ornament::before {
+            top: -50px;
+            left: -50px;
+            animation-direction: reverse;
+        }
+
+        .loader-ornament::after {
+            bottom: -50px;
+            right: -50px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         /* Header */
@@ -348,17 +450,22 @@
 
         .contact-container {
             display: flex;
-            gap: 50px;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+            text-align: center;
         }
 
         .contact-info {
-            flex: 1;
+            width: 100%;
+            max-width: 600px;
         }
 
         .contact-info-item {
             display: flex;
             align-items: flex-start;
             margin-bottom: 25px;
+            justify-content: center;
         }
 
         .contact-icon {
@@ -374,31 +481,60 @@
             flex-shrink: 0;
         }
 
-        .contact-form {
-            flex: 1;
+        /* WhatsApp Booking Section */
+        .whatsapp-booking {
+            background-color: white;
+            padding: 60px 0;
+            text-align: center;
         }
 
-        .form-group {
-            margin-bottom: 20px;
+        .whatsapp-box {
+            background: linear-gradient(135deg, #f8b4d9 0%, #6a5acd 100%);
+            border-radius: 20px;
+            padding: 60px 40px;
+            color: white;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
+        .whatsapp-box h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
         }
 
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
+        .whatsapp-box p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
         }
 
-        textarea.form-control {
-            height: 150px;
-            resize: vertical;
+        .whatsapp-features {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .whatsapp-feature {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            width: 200px;
+            backdrop-filter: blur(10px);
+        }
+
+        .whatsapp-feature i {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .whatsapp-feature h4 {
+            color: white;
+            font-size: 1.1rem;
         }
 
         /* Map Section */
@@ -495,7 +631,7 @@
 
         /* Responsive */
         @media (max-width: 992px) {
-            .about-content, .contact-container {
+            .about-content {
                 flex-direction: column;
             }
             .footer-content {
@@ -504,6 +640,9 @@
             .footer-column {
                 flex: 1 0 45%;
                 margin-bottom: 30px;
+            }
+            .whatsapp-features {
+                gap: 20px;
             }
         }
 
@@ -541,8 +680,8 @@
                 gap: 20px;
             }
             .loader-logo {
-                width: 100px;
-                height: 100px;
+                width: 120px;
+                height: 120px;
             }
             .header-logos {
                 flex-direction: column;
@@ -551,21 +690,35 @@
             .header-logos img {
                 height: 80px;
             }
+            .whatsapp-box {
+                padding: 40px 20px;
+            }
+            .whatsapp-box h2 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Loader -->
+    <!-- Loader Stilizzato -->
     <div id="loader">
-        <div class="loader-logos">
-            <div class="loader-logo">
-                <img src="logoa.png" alt="Happy Shop Logo">
-            </div>
-            <div class="loader-logo">
-                <img src="logob.png" alt="Martina Catering Logo">
+        <div class="loader-container">
+            <div class="loader-ornament"></div>
+            <div class="loader-logos">
+                <div class="loader-logo">
+                    <img src="logoa.png" alt="Happy Shop Logo">
+                </div>
+                <div class="loader-logo">
+                    <img src="logob.png" alt="Martina Catering Logo">
+                </div>
             </div>
         </div>
-        <div class="loader-text">Caricamento...</div>
+        <div class="loader-text">Preparando la magia del tuo evento...</div>
+        <div class="loader-dots">
+            <div class="loader-dot"></div>
+            <div class="loader-dot"></div>
+            <div class="loader-dot"></div>
+        </div>
     </div>
 
     <!-- Header -->
@@ -582,7 +735,7 @@
                     <li><a href="#servizi">Servizi</a></li>
                     <li><a href="#galleria">Galleria</a></li>
                     <li><a href="#chi-siamo">Chi Siamo</a></li>
-                    <li><a href="#contatti">Contatti</a></li>
+                    <li><a href="#prenota">Prenota</a></li>
                 </ul>
             </nav>
         </div>
@@ -593,7 +746,7 @@
         <div class="container hero-content">
             <h1>Creiamo insieme il tuo evento indimenticabile</h1>
             <p>Specialisti nella preparazione di matrimoni ed eventi ad Ancona e in tutta Italia. Dalla piccola pasticceria agli allestimenti completi, realizziamo i tuoi sogni.</p>
-            <a href="#contatti" class="btn">Contattaci</a>
+            <a href="#prenota" class="btn">Prenota il tuo evento</a>
         </div>
     </section>
 
@@ -710,7 +863,8 @@
             </div>
         </div>
     </section>
-     <!-- Gallery Section 2 -->
+
+    <!-- Gallery Section 2 -->
     <section class="gallery" id="galleria">
         <div class="container">
             <div class="section-title">
@@ -747,7 +901,6 @@
         </div>
     </section>
 
-
     <!-- About Section -->
     <section class="about" id="chi-siamo">
         <div class="container">
@@ -761,12 +914,45 @@
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <a href="#contatti" class="btn">Contattaci per un preventivo</a>
+                    <a href="#prenota" class="btn">Prenota il tuo evento</a>
                 </div>
                 <div class="about-image">
                     <img src="logob.png" width="100px">
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Booking Section -->
+    <section class="whatsapp-booking" id="prenota">
+        <div class="container">
+            <div class="whatsapp-box">
+                <h2>Prenota il tuo evento su WhatsApp</h2>
+                <p>Contattaci direttamente su WhatsApp per discutere dei dettagli del tuo evento, ricevere un preventivo personalizzato e prenotare i nostri servizi.</p>
                 
+                <div class="whatsapp-features">
+                    <div class="whatsapp-feature">
+                        <i class="fas fa-clock"></i>
+                        <h4>Risposta Rapida</h4>
+                        <p>Rispondiamo entro poche ore</p>
+                    </div>
+                    <div class="whatsapp-feature">
+                        <i class="fas fa-comments"></i>
+                        <h4>Chat Diretta</h4>
+                        <p>Comunicazione semplice e diretta</p>
+                    </div>
+                    <div class="whatsapp-feature">
+                        <i class="fas fa-calendar-check"></i>
+                        <h4>Prenotazione Istantanea</h4>
+                        <p>Conferma immediata della disponibilità</p>
+                    </div>
+                </div>
+                
+                <a href="https://wa.me/393290474246?text=Ciao%20Happy%20Shop!%20Vorrei%20informazioni%20per%20prenotare%20un%20evento." class="btn btn-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Prenota su WhatsApp
+                </a>
+                
+                <p style="margin-top: 20px; font-size: 1rem;">Oppure chiamaci al: +39 329 047 4246</p>
             </div>
         </div>
     </section>
@@ -812,42 +998,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Nome completo</label>
-                            <input type="text" id="name" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Telefono</label>
-                            <input type="tel" id="phone" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="event">Tipo di evento</label>
-                            <select id="event" class="form-control">
-                                <option value="">Seleziona...</option>
-                                <option value="matrimonio">Matrimonio</option>
-                                <option value="compleanno">Compleanno</option>
-                                <option value="battesimo">Battesimo</option>
-                                <option value="azienda">Evento aziendale</option>
-                                <option value="altro">Altro</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="date">Data prevista dell'evento</label>
-                            <input type="date" id="date" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Messaggio</label>
-                            <textarea id="message" class="form-control" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Invia messaggio</button>
-                    </form>
-                </div>
             </div>
         </div>
     </section>
@@ -855,7 +1005,7 @@
     <!-- Map Section -->
     <section class="map-section">
         <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2876.308671363168!2d13.51821531549919!3d43.61587997912066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132d7f8b0c5c5c5f%3A0x7e33e9e9c5c5c5c5!2sVia%20delle%20Tavernelle%2C%20168%2C%2060129%20Ancona%20AN%2C%20Italia!5e0!3m2!1sit!2sit!4v1620000000000!5m2!1sit!2sit" allowfullscreen="" loading="lazy"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2876.308671363168!2d13.51821531549919!3d43.61587997912066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132d7f8b0c5c5c5f%3A0x7e33e9e9c5c5c5c5!2sVia%20delle%20Tavernelle%2C%20168%2C%2060129%20Ancona%20AN%2C%20Italia!5e0!3m2!1sit!2sit" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </section>
 
@@ -892,7 +1042,7 @@
                         <li><a href="#servizi">Servizi</a></li>
                         <li><a href="#galleria">Galleria</a></li>
                         <li><a href="#chi-siamo">Chi Siamo</a></li>
-                        <li><a href="#contatti">Contatti</a></li>
+                        <li><a href="#prenota">Prenota</a></li>
                     </ul>
                 </div>
             </div>
@@ -908,7 +1058,7 @@
             const loader = document.getElementById('loader');
             setTimeout(function() {
                 loader.classList.add('fade-out');
-            }, 1500);
+            }, 2000);
         });
 
         // Mobile Menu
@@ -921,13 +1071,6 @@
             link.addEventListener('click', function() {
                 document.querySelector('nav ul').classList.remove('active');
             });
-        });
-
-        // Contact Form
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Grazie per il tuo messaggio! Ti contatteremo presto.');
-            this.reset();
         });
 
         // Smooth Scroll
@@ -958,6 +1101,12 @@
                 header.style.padding = '15px 0';
                 header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
             }
+        });
+
+        // WhatsApp Click Tracking
+        document.querySelector('.btn-whatsapp').addEventListener('click', function() {
+            console.log('WhatsApp booking button clicked');
+            // Qui puoi aggiungere codice per tracciare le conversioni, ad esempio Google Analytics
         });
     </script>
 </body>
