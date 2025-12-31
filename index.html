@@ -87,20 +87,20 @@
             box-shadow: 0 10px 30px rgba(37, 211, 102, 0.6);
         }
 
-        /* Loader Stilizzato e Forte */
+        /* Loader Elegante e Semplice */
         #loader {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #ff1493 0%, #8a2be2 50%, #ffd700 100%);
+            background: white;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            transition: opacity 0.8s, visibility 0.8s;
+            transition: opacity 0.5s, visibility 0.5s;
         }
 
         #loader.fade-out {
@@ -108,165 +108,61 @@
             visibility: hidden;
         }
 
-        .loader-container {
-            position: relative;
-            width: 350px;
-            height: 350px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .loader-logos {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 50px;
-            margin-bottom: 50px;
+        .loader-content {
+            text-align: center;
         }
 
         .loader-logo {
-            width: 180px;
-            height: 180px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: rgba(255, 255, 255, 0.95);
-            border-radius: 25px;
-            padding: 25px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-            animation: float 2.5s ease-in-out infinite;
-            border: 5px solid white;
-        }
-
-        .loader-logo:nth-child(2) {
-            animation-delay: 0.4s;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 30px;
+            animation: gentlePulse 2s infinite ease-in-out;
         }
 
         .loader-logo img {
-            max-width: 100%;
-            max-height: 100%;
+            width: 100%;
+            height: 100%;
             object-fit: contain;
         }
 
         .loader-text {
-            font-size: 32px;
-            color: white;
-            font-weight: 800;
-            text-align: center;
-            margin-top: 25px;
-            text-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            font-size: 28px;
+            color: var(--secondary-color);
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
         }
 
-        .loader-dots {
-            display: flex;
-            gap: 15px;
-            margin-top: 25px;
+        .progress-bar {
+            width: 300px;
+            height: 4px;
+            background-color: #eee;
+            border-radius: 2px;
+            overflow: hidden;
+            margin: 0 auto;
         }
 
-        .loader-dot {
-            width: 20px;
-            height: 20px;
-            background-color: white;
-            border-radius: 50%;
-            animation: pulse 1.2s infinite ease-in-out;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-        }
-
-        .loader-dot:nth-child(1) {
-            background-color: #ff1493;
-        }
-        .loader-dot:nth-child(2) {
-            background-color: #8a2be2;
-            animation-delay: 0.2s;
-        }
-        .loader-dot:nth-child(3) {
-            background-color: #ffd700;
-            animation-delay: 0.4s;
-        }
-
-        @keyframes float {
-            0%, 100% { 
-                transform: translateY(0) rotate(0deg); 
-                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-            }
-            50% { 
-                transform: translateY(-25px) rotate(5deg); 
-                box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% { 
-                opacity: 0.3; 
-                transform: scale(0.7); 
-            }
-            50% { 
-                opacity: 1; 
-                transform: scale(1.2); 
-            }
-        }
-
-        .loader-ornament {
-            position: absolute;
-            width: 100%;
+        .progress {
+            width: 0%;
             height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            animation: loading 2s ease-in-out forwards;
         }
 
-        .loader-ornament::before,
-        .loader-ornament::after {
-            content: '';
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            border: 4px solid rgba(255, 255, 255, 0.4);
-            animation: spin 15s linear infinite;
+        @keyframes gentlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
-        .loader-ornament::before {
-            top: -60px;
-            left: -60px;
-            animation-direction: reverse;
-            border-color: rgba(255, 20, 147, 0.6);
-        }
-
-        .loader-ornament::after {
-            bottom: -60px;
-            right: -60px;
-            border-color: rgba(138, 43, 226, 0.6);
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .loader-sparkle {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: white;
-            border-radius: 50%;
-            animation: sparkle 2s infinite;
-        }
-
-        @keyframes sparkle {
-            0%, 100% { opacity: 0; transform: scale(0); }
-            50% { opacity: 1; transform: scale(1); }
+        @keyframes loading {
+            0% { width: 0%; }
+            100% { width: 100%; }
         }
 
         /* Header */
         header {
-            background: linear-gradient(90deg, #ff1493, #8a2be2);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            background: white;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             position: fixed;
             width: 100%;
             z-index: 1000;
@@ -287,8 +183,7 @@
         }
 
         .header-logos img {
-            height: 130px;
-            filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.2));
+            height: 120px;
         }
 
         nav ul {
@@ -302,7 +197,7 @@
 
         nav ul li a {
             text-decoration: none;
-            color: white;
+            color: var(--text-color);
             font-weight: 600;
             font-size: 1.1rem;
             transition: all 0.3s ease;
@@ -311,35 +206,55 @@
         }
 
         nav ul li a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
+            color: var(--primary-color);
             transform: translateY(-2px);
+        }
+
+        nav ul li a.active {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
         }
 
         .mobile-menu {
             display: none;
             font-size: 28px;
             cursor: pointer;
-            color: white;
+            color: var(--text-color);
         }
 
-        /* Hero Section */
+        /* Hero Section - Sans filtre */
         .hero {
-            background: linear-gradient(rgba(138, 43, 226, 0.8), rgba(255, 20, 147, 0.8)), url('baniere.jpg');
+            background: url('baniere.jpg') no-repeat center center;
             background-size: cover;
-            background-position: center;
             background-attachment: fixed;
             height: 100vh;
             display: flex;
             align-items: center;
             text-align: center;
             color: white;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
 
         .hero-content h1 {
             font-size: 4rem;
             margin-bottom: 25px;
             color: white;
-            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
             letter-spacing: 1px;
         }
 
@@ -350,6 +265,7 @@
             margin-left: auto;
             margin-right: auto;
             font-weight: 300;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
         }
 
         /* Services Section */
@@ -549,23 +465,6 @@
             overflow: hidden;
         }
 
-        .whatsapp-booking::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: floatBackground 20s linear infinite;
-        }
-
-        @keyframes floatBackground {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
         .whatsapp-box {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 25px;
@@ -762,12 +661,13 @@
                 left: -100%;
                 width: 100%;
                 height: calc(100vh - 80px);
-                background: linear-gradient(135deg, #ff1493, #8a2be2);
+                background: white;
                 flex-direction: column;
                 align-items: center;
                 padding-top: 60px;
                 transition: left 0.3s ease;
                 z-index: 999;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             }
             nav ul.active {
                 left: 0;
@@ -786,14 +686,6 @@
                 flex: 1 0 100%;
                 margin-right: 0;
             }
-            .loader-logos {
-                flex-direction: column;
-                gap: 30px;
-            }
-            .loader-logo {
-                width: 150px;
-                height: 150px;
-            }
             .header-logos {
                 flex-direction: column;
                 gap: 15px;
@@ -810,28 +702,30 @@
             .section-title h2 {
                 font-size: 2.2rem;
             }
+            .loader-logo {
+                width: 120px;
+                height: 120px;
+            }
+            .loader-text {
+                font-size: 24px;
+            }
+            .progress-bar {
+                width: 250px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Loader Stilizzato -->
+    <!-- Loader Elegante -->
     <div id="loader">
-        <div class="loader-container">
-            <div class="loader-ornament"></div>
-            <div class="loader-logos">
-                <div class="loader-logo">
-                    <img src="logoa.png" alt="Happy Shop Logo">
-                </div>
-                <div class="loader-logo">
-                    <img src="logob.png" alt="Martina Catering Logo">
-                </div>
+        <div class="loader-content">
+            <div class="loader-logo">
+                <img src="logoa.png" alt="Happy Shop Logo">
             </div>
-        </div>
-        <div class="loader-text">Preparando la Magia del tuo Evento</div>
-        <div class="loader-dots">
-            <div class="loader-dot"></div>
-            <div class="loader-dot"></div>
-            <div class="loader-dot"></div>
+            <div class="loader-text">Happy Shop Events</div>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
         </div>
     </div>
 
@@ -845,7 +739,7 @@
             <div class="mobile-menu">☰</div>
             <nav>
                 <ul>
-                    <li><a href="#home">Home</a></li>
+                    <li><a href="#home" class="active">Home</a></li>
                     <li><a href="#servizi">Servizi</a></li>
                     <li><a href="#galleria">Galleria</a></li>
                     <li><a href="#chi-siamo">Chi Siamo</a></li>
@@ -855,7 +749,7 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section - Sans filtre -->
     <section class="hero" id="home">
         <div class="container hero-content">
             <h1>CREIAMO INSIEME IL TUO EVENTO INDIMENTICABILE</h1>
@@ -973,6 +867,54 @@
         </div>
     </section>
 
+    <!-- Gallery Section -->
+    <section class="gallery" id="galleria">
+        <div class="container">
+            <div class="section-title">
+                <h2>LA NOSTRA GALLERIA</h2>
+                <p>Alcune delle nostre realizzazioni più belle</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="1img.jpg" alt="Torta nuziale">
+                    <div class="gallery-overlay"></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="2img.jpg" alt="Decorazione matrimonio">
+                    <div class="gallery-overlay"></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="3img.jpg" alt="Cupcakes">
+                    <div class="gallery-overlay"></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="4img.jpg" alt="Palloncini">
+                    <div class="gallery-overlay"></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="5img.jpg" alt="Bomboniere">
+                    <div class="gallery-overlay"></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="6img.jpg" alt="Allestimenti">
+                    <div class="gallery-overlay"></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="7img.jpg" alt="Torta nuziale">
+                    <div class="gallery-overlay"></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="8img.jpg" alt="Decorazione matrimonio">
+                    <div class="gallery-overlay"></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="9img.jpg" alt="Cupcakes">
+                    <div class="gallery-overlay"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- About Section -->
     <section class="about" id="chi-siamo">
         <div class="container">
@@ -991,31 +933,6 @@
                 </div>
                 <div class="about-image">
                     <img src="logob.png" alt="Martina Catering">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section class="gallery" id="galleria">
-        <div class="container">
-            <div class="section-title">
-                <h2>LA NOSTRA GALLERIA</h2>
-                <p>Alcune delle nostre realizzazioni più belle</p>
-            </div>
-            <div class="gallery-grid">
-                <!-- Le tue immagini della galleria qui -->
-                <div class="gallery-item">
-                    <img src="1img.jpg" alt="Torta nuziale">
-                    <div class="gallery-overlay"></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="2img.jpg" alt="Decorazione matrimonio">
-                    <div class="gallery-overlay"></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="3img.jpg" alt="Cupcakes">
-                    <div class="gallery-overlay"></div>
                 </div>
             </div>
         </div>
@@ -1118,7 +1035,7 @@
     </footer>
 
     <script>
-        // Page Loader con animazioni migliorate
+        // Page Loader semplice
         window.addEventListener('load', function() {
             const loader = document.getElementById('loader');
             setTimeout(function() {
@@ -1126,8 +1043,8 @@
                 // Rimuove il loader dal DOM dopo l'animazione
                 setTimeout(() => {
                     loader.style.display = 'none';
-                }, 800);
-            }, 2500);
+                }, 500);
+            }, 1500);
         });
 
         // Mobile Menu
@@ -1167,17 +1084,16 @@
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
                 header.style.padding = '5px 0';
-                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.3)';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.15)';
             } else {
                 header.style.padding = '15px 0';
-                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.2)';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
             }
         });
 
         // WhatsApp Click Tracking
         document.querySelector('.btn-whatsapp').addEventListener('click', function() {
             console.log('WhatsApp booking button clicked');
-            // Puoi aggiungere qui Google Analytics o altri tracker
         });
 
         // Aggiunge classe active al link corrente
