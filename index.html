@@ -1,1122 +1,1430 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Shop - Preparazione Eventi e Matrimoni</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --primary-color: #ff1493;
-            --secondary-color: #8a2be2;
-            --accent-color: #ffd700;
-            --text-color: #222;
-            --light-color: #fff5f9;
-            --dark-color: #1a1a1a;
-        }
-
-        body {
-            background-color: var(--light-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        section {
-            padding: 80px 0;
-        }
-
-        h1, h2, h3, h4 {
-            margin-bottom: 20px;
-            color: var(--secondary-color);
-        }
-
-        p {
-            margin-bottom: 15px;
-        }
-
-        .btn {
-            display: inline-block;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.3);
-        }
-
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(255, 20, 147, 0.5);
-        }
-
-        .btn-whatsapp {
-            background: linear-gradient(45deg, #25D366, #128C7E);
-            color: white;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 18px 35px;
-            font-size: 1.2rem;
-            margin-top: 25px;
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
-        }
-
-        .btn-whatsapp:hover {
-            background: linear-gradient(45deg, #1EBE5D, #0D7C68);
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.6);
-        }
-
-        /* Loader Elegante e Semplice */
-        #loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s, visibility 0.5s;
-        }
-
-        #loader.fade-out {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .loader-content {
-            text-align: center;
-        }
-
-        .loader-logo {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 30px;
-            animation: gentlePulse 2s infinite ease-in-out;
-        }
-
-        .loader-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .loader-text {
-            font-size: 28px;
-            color: var(--secondary-color);
-            font-weight: 700;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
-        }
-
-        .progress-bar {
-            width: 300px;
-            height: 4px;
-            background-color: #eee;
-            border-radius: 2px;
-            overflow: hidden;
-            margin: 0 auto;
-        }
-
-        .progress {
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            animation: loading 2s ease-in-out forwards;
-        }
-
-        @keyframes gentlePulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        @keyframes loading {
-            0% { width: 0%; }
-            100% { width: 100%; }
-        }
-
-        /* Header */
-        header {
-            background: white;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-        }
-
-        .header-logos {
-            display: flex;
-            gap: 25px;
-            align-items: center;
-        }
-
-        .header-logos img {
-            height: 120px;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 30px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            padding: 8px 15px;
-            border-radius: 20px;
-        }
-
-        nav ul li a:hover {
-            color: var(--primary-color);
-            transform: translateY(-2px);
-        }
-
-        nav ul li a.active {
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            color: white;
-        }
-
-        .mobile-menu {
-            display: none;
-            font-size: 28px;
-            cursor: pointer;
-            color: var(--text-color);
-        }
-
-        /* Hero Section - Sans filtre */
-        .hero {
-            background: url('baniere.jpg') no-repeat center center;
-            background-size: cover;
-            background-attachment: fixed;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: white;
-            position: relative;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.3);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-content h1 {
-            font-size: 4rem;
-            margin-bottom: 25px;
-            color: white;
-            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
-            letter-spacing: 1px;
-        }
-
-        .hero-content p {
-            font-size: 1.4rem;
-            margin-bottom: 35px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            font-weight: 300;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Services Section */
-        .services {
-            background: linear-gradient(135deg, #fff5f9 0%, #f0e6ff 100%);
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2 {
-            font-size: 3rem;
-            position: relative;
-            display: inline-block;
-            color: var(--secondary-color);
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            border-radius: 5px;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 35px;
-        }
-
-        .service-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.1);
-            transition: all 0.3s ease;
-            border: 3px solid transparent;
-        }
-
-        .service-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(138, 43, 226, 0.2);
-            border-color: var(--primary-color);
-        }
-
-        .service-icon {
-            height: 180px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 60px;
-        }
-
-        .service-content {
-            padding: 25px;
-        }
-
-        .service-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--secondary-color);
-        }
-
-        /* Gallery Section */
-        .gallery {
-            background: linear-gradient(135deg, #f0e6ff 0%, #fff5f9 100%);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 25px;
-        }
-
-        .gallery-item {
-            height: 280px;
-            border-radius: 15px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.15);
-        }
-
-        .gallery-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(138, 43, 226, 0.8), rgba(255, 20, 147, 0.8));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
-        }
-
-        /* About Section */
-        .about {
-            background: white;
-        }
-
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 60px;
-        }
-
-        .about-text {
-            flex: 1;
-        }
-
-        .about-image {
-            flex: 1;
-            height: 450px;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-            border: 5px solid white;
-        }
-
-        .about-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Contact Section */
-        .contact {
-            background: linear-gradient(135deg, #fff5f9 0%, #f0e6ff 100%);
-        }
-
-        .contact-container {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-            align-items: center;
-            text-align: center;
-        }
-
-        .contact-info {
-            width: 100%;
-            max-width: 700px;
-        }
-
-        .contact-info-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 30px;
-            justify-content: center;
-        }
-
-        .contact-icon {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 20px;
-            flex-shrink: 0;
-            font-size: 24px;
-            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
-        }
-
-        /* WhatsApp Booking Section */
-        .whatsapp-booking {
-            background: linear-gradient(135deg, #ff1493 0%, #8a2be2 100%);
-            padding: 80px 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .whatsapp-box {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 25px;
-            padding: 70px 50px;
-            color: var(--dark-color);
-            max-width: 850px;
-            margin: 0 auto;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-            position: relative;
-            z-index: 1;
-            border: 5px solid white;
-        }
-
-        .whatsapp-box h2 {
-            color: var(--secondary-color);
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        .whatsapp-box p {
-            font-size: 1.3rem;
-            margin-bottom: 40px;
-            color: #555;
-        }
-
-        .whatsapp-features {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 35px;
-            margin: 50px 0;
-        }
-
-        .whatsapp-feature {
-            background: linear-gradient(135deg, #fff5f9, #f0e6ff);
-            border-radius: 20px;
-            padding: 25px;
-            width: 220px;
-            border: 3px solid var(--primary-color);
-            transition: all 0.3s ease;
-        }
-
-        .whatsapp-feature:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(138, 43, 226, 0.2);
-        }
-
-        .whatsapp-feature i {
-            font-size: 50px;
-            margin-bottom: 20px;
-            color: var(--secondary-color);
-        }
-
-        .whatsapp-feature h4 {
-            color: var(--secondary-color);
-            font-size: 1.3rem;
-        }
-
-        /* Map Section */
-        .map-section {
-            padding: 0;
-            height: 550px;
-        }
-
-        .map-container {
-            width: 100%;
-            height: 100%;
-        }
-
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a1a3a 100%);
-            color: white;
-            padding: 70px 0 30px;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 40px;
-        }
-
-        .footer-column {
-            flex: 1;
-            margin-right: 40px;
-        }
-
-        .footer-column:last-child {
-            margin-right: 0;
-        }
-
-        .footer-column h3 {
-            color: white;
-            margin-bottom: 25px;
-            font-size: 1.4rem;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: #ddd;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary-color);
-            transform: translateX(5px);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        .social-link {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border-radius: 50%;
-            text-align: center;
-            line-height: 50px;
-            color: white;
-            transition: all 0.3s ease;
-            font-size: 20px;
-        }
-
-        .social-link:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 1rem;
-            color: #aaa;
-        }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .about-content {
-                flex-direction: column;
-            }
-            .footer-content {
-                flex-wrap: wrap;
-            }
-            .footer-column {
-                flex: 1 0 45%;
-                margin-bottom: 40px;
-            }
-            .whatsapp-features {
-                gap: 25px;
-            }
-            .hero-content h1 {
-                font-size: 3rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .mobile-menu {
-                display: block;
-            }
-            nav ul {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background: white;
-                flex-direction: column;
-                align-items: center;
-                padding-top: 60px;
-                transition: left 0.3s ease;
-                z-index: 999;
-                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            }
-            nav ul.active {
-                left: 0;
-            }
-            nav ul li {
-                margin: 20px 0;
-            }
-            nav ul li a {
-                font-size: 1.3rem;
-                padding: 12px 25px;
-            }
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-            .footer-column {
-                flex: 1 0 100%;
-                margin-right: 0;
-            }
-            .header-logos {
-                flex-direction: column;
-                gap: 15px;
-            }
-            .header-logos img {
-                height: 100px;
-            }
-            .whatsapp-box {
-                padding: 50px 25px;
-            }
-            .whatsapp-box h2 {
-                font-size: 2.2rem;
-            }
-            .section-title h2 {
-                font-size: 2.2rem;
-            }
-            .loader-logo {
-                width: 120px;
-                height: 120px;
-            }
-            .loader-text {
-                font-size: 24px;
-            }
-            .progress-bar {
-                width: 250px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="theme-color" content="#c9184a">
+
+<!-- ===== SEO META TAG ESSENZIALI ===== -->
+<title>Happy Shop Ancona | Matrimoni & Eventi | Torte Nuziali, Allestimenti, Wedding Planner</title>
+<meta name="description" content="Happy Shop Ancona: specialisti in matrimoni ed eventi. Torte nuziali personalizzate, allestimenti, piccola pasticceria, cupcakes, palloncini e wedding planner. Contattaci su WhatsApp!">
+<meta name="keywords" content="happy shop ancona, matrimoni ancona, torte nuziali ancona, allestimenti matrimonio, wedding planner ancona, torte decorate ancona, eventi ancona, catering matrimoni, bomboniere ancona, palloncini eventi, pasticceria matrimonio ancona, martina catering">
+<meta name="author" content="Happy Shop Ancona">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="googlebot" content="index, follow">
+<link rel="canonical" href="https://www.happyshopaancona.it/">
+<meta name="geo.region" content="IT-AN">
+<meta name="geo.placename" content="Ancona">
+<meta name="geo.position" content="43.6159;13.5184">
+<meta name="ICBM" content="43.6159, 13.5184">
+<meta name="language" content="Italian">
+
+<!-- ===== OPEN GRAPH (Facebook / WhatsApp Preview) ===== -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.happyshopancona.it/">
+<meta property="og:title" content="Happy Shop Ancona | Matrimoni & Eventi Indimenticabili">
+<meta property="og:description" content="Specialisti in matrimoni ed eventi ad Ancona. Torte nuziali, allestimenti, pasticceria, wedding planner. Prenota su WhatsApp!">
+<meta property="og:image" content="https://www.happyshopancona.it/og-image.jpg">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="Happy Shop Ancona">
+
+<!-- ===== TWITTER CARD ===== -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Happy Shop Ancona | Matrimoni & Eventi">
+<meta name="twitter:description" content="Torte nuziali, allestimenti, wedding planner ad Ancona. Prenota ora!">
+<meta name="twitter:image" content="https://www.happyshopancona.it/og-image.jpg">
+
+<!-- ===== SCHEMA.ORG JSON-LD (Google Rich Results) ===== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://www.happyshopancona.it/#organization",
+      "name": "Happy Shop Ancona",
+      "alternateName": "Happy Shop Events",
+      "description": "Specialisti nella preparazione di matrimoni ed eventi ad Ancona e in tutta Italia. Torte nuziali, allestimenti, piccola pasticceria, wedding planner.",
+      "url": "https://www.happyshopancona.it",
+      "telephone": "+393290474246",
+      "email": "happy_shop@virgilio.it",
+      "image": "https://www.happyshopancona.it/logoa.png",
+      "logo": "https://www.happyshopancona.it/logoa.png",
+      "priceRange": "€€",
+      "currenciesAccepted": "EUR",
+      "paymentAccepted": "Contanti, Bonifico Bancario, Carta di Credito",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Via delle Tavernelle 168",
+        "addressLocality": "Ancona",
+        "addressRegion": "AN",
+        "postalCode": "60129",
+        "addressCountry": "IT"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "43.6159",
+        "longitude": "13.5184"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "09:00",
+          "closes": "19:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "13:00"
+        }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/HappyShopAncona",
+        "https://www.instagram.com/happyshop_vivereacolori"
+      ],
+      "hasMap": "https://goo.gl/maps/example",
+      "areaServed": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": "43.6159",
+          "longitude": "13.5184"
+        },
+        "geoRadius": "100000"
+      },
+      "serviceArea": {
+        "@type": "AdministrativeArea",
+        "name": "Italia"
+      },
+      "knowsAbout": ["Matrimoni","Wedding Planning","Torte Nuziali","Allestimenti","Pasticceria","Catering"],
+      "foundingDate": "2015",
+      "slogan": "Creiamo insieme il tuo evento indimenticabile"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.happyshopancona.it/#website",
+      "url": "https://www.happyshopancona.it",
+      "name": "Happy Shop Ancona",
+      "description": "Matrimoni ed eventi indimenticabili ad Ancona",
+      "publisher": {"@id": "https://www.happyshopancona.it/#organization"},
+      "inLanguage": "it-IT"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Dove si trova Happy Shop ad Ancona?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Happy Shop si trova in Via delle Tavernelle 168, Ancona (AN), 60129, Italia."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Come posso prenotare un evento con Happy Shop?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Puoi prenotare contattandoci su WhatsApp al +39 329 047 4246, chiamandoci direttamente o inviando un'email a happy_shop@virgilio.it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quali servizi offre Happy Shop per i matrimoni?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Happy Shop offre torte nuziali personalizzate, allestimenti completi, piccola pasticceria, cupcakes, confetti, palloncini, partecipazioni, bomboniere e servizio completo di wedding planning."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Happy Shop lavora anche fuori Ancona?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì, Happy Shop opera ad Ancona e in tutta Italia, garantendo lo stesso livello di qualità e cura dei dettagli ovunque."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem","position": 1,"name": "Home","item": "https://www.happyshopancona.it/"},
+        {"@type": "ListItem","position": 2,"name": "Servizi","item": "https://www.happyshopancona.it/#servizi"},
+        {"@type": "ListItem","position": 3,"name": "Galleria","item": "https://www.happyshopancona.it/#galleria"},
+        {"@type": "ListItem","position": 4,"name": "Chi Siamo","item": "https://www.happyshopancona.it/#chi-siamo"},
+        {"@type": "ListItem","position": 5,"name": "Prenota","item": "https://www.happyshopancona.it/#prenota"}
+      ]
+    }
+  ]
+}
+</script>
+
+<!-- ===== FONTS ===== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+:root {
+  --rose: #c9184a;
+  --rose-light: #ff4d6d;
+  --rose-pale: #fff0f3;
+  --plum: #590d22;
+  --gold: #d4a94c;
+  --gold-light: #f0ca7e;
+  --cream: #fdf8f0;
+  --dark: #1a0a0e;
+  --gray: #6b6b6b;
+  --white: #ffffff;
+  --shadow-soft: 0 4px 30px rgba(201,24,74,0.12);
+  --shadow-med: 0 10px 50px rgba(201,24,74,0.18);
+  --radius: 18px;
+  --radius-sm: 10px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--cream);
+  color:var(--dark);
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+/* ── LOADER ── */
+#loader{
+  position:fixed;inset:0;
+  background:var(--white);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  z-index:9999;
+  transition:opacity .6s,visibility .6s;
+}
+#loader.out{opacity:0;visibility:hidden}
+.ld-icon{font-size:64px;animation:heartbeat 1.4s infinite}
+.ld-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(22px,6vw,38px);
+  color:var(--plum);
+  font-weight:700;
+  margin:18px 0 24px;
+  letter-spacing:2px;
+}
+.ld-bar{width:min(280px,80vw);height:3px;background:#f0e0e5;border-radius:3px;overflow:hidden}
+.ld-fill{
+  width:0;height:100%;
+  background:linear-gradient(90deg,var(--gold),var(--rose));
+  animation:ldprog 2s ease forwards;
+}
+@keyframes ldprog{to{width:100%}}
+@keyframes heartbeat{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+
+/* ── HEADER ── */
+header{
+  position:fixed;top:0;width:100%;z-index:1000;
+  background:rgba(255,255,255,0.95);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(201,24,74,0.08);
+  transition:box-shadow .3s;
+}
+header.scrolled{box-shadow:var(--shadow-soft)}
+.hdr{
+  max-width:1240px;margin:0 auto;
+  padding:0 20px;
+  display:flex;align-items:center;
+  justify-content:space-between;
+  height:72px;
+}
+.hdr-brand{
+  display:flex;align-items:center;gap:14px;
+  text-decoration:none;
+}
+.hdr-brand img{height:52px;width:auto;object-fit:contain}
+.brand-sep{width:1px;height:36px;background:rgba(201,24,74,0.25)}
+.hdr-nav ul{display:flex;list-style:none;gap:4px}
+.hdr-nav a{
+  font-size:.93rem;font-weight:500;
+  color:var(--dark);text-decoration:none;
+  padding:8px 14px;border-radius:50px;
+  transition:all .25s;
+}
+.hdr-nav a:hover,.hdr-nav a.act{
+  background:var(--rose);color:#fff;
+}
+.burger{
+  display:none;
+  background:none;border:none;cursor:pointer;
+  flex-direction:column;gap:5px;padding:8px;
+}
+.burger span{
+  display:block;width:24px;height:2px;
+  background:var(--dark);border-radius:2px;
+  transition:all .3s;
+}
+.burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+/* Mobile Nav */
+.mob-nav{
+  display:none;
+  position:fixed;top:72px;left:0;right:0;bottom:0;
+  background:rgba(255,255,255,0.98);backdrop-filter:blur(20px);
+  z-index:999;flex-direction:column;
+  align-items:center;justify-content:center;gap:12px;
+}
+.mob-nav.open{display:flex}
+.mob-nav a{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(26px,7vw,40px);
+  font-weight:600;color:var(--plum);
+  text-decoration:none;
+  padding:10px 30px;
+  transition:color .2s;
+}
+.mob-nav a:hover{color:var(--rose)}
+.mob-whatsapp{
+  margin-top:20px;
+  display:flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,#25D366,#128C7E);
+  color:#fff;padding:14px 30px;border-radius:50px;
+  font-size:1.1rem;font-weight:600;text-decoration:none;
+}
+
+/* ── HERO ── */
+.hero{
+  min-height:100dvh;min-height:100vh;
+  padding-top:72px;
+  background:url('baniere.jpg') center/cover no-repeat;
+  position:relative;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(160deg,rgba(89,13,34,0.75) 0%,rgba(201,24,74,0.4) 60%,rgba(10,4,6,0.55) 100%);
+}
+.hero-content{
+  position:relative;z-index:2;
+  padding:40px 20px;
+  max-width:820px;margin:0 auto;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(212,169,76,0.2);
+  border:1px solid var(--gold);
+  color:var(--gold-light);
+  padding:7px 20px;border-radius:50px;
+  font-size:.88rem;letter-spacing:2px;
+  text-transform:uppercase;font-weight:500;
+  margin-bottom:24px;
+}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(36px,9vw,78px);
+  font-weight:700;
+  color:#fff;
+  line-height:1.1;
+  letter-spacing:-1px;
+  margin-bottom:22px;
+  text-shadow:0 4px 20px rgba(0,0,0,0.4);
+}
+.hero h1 em{
+  font-style:italic;
+  background:linear-gradient(90deg,var(--gold-light),var(--gold));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero p{
+  color:rgba(255,255,255,0.88);
+  font-size:clamp(15px,3.5vw,19px);
+  max-width:640px;margin:0 auto 38px;
+  font-weight:300;
+}
+.hero-btns{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,var(--rose),var(--plum));
+  color:#fff;padding:16px 34px;border-radius:50px;
+  font-size:clamp(14px,3.5vw,17px);font-weight:600;
+  text-decoration:none;letter-spacing:.5px;
+  box-shadow:0 8px 30px rgba(201,24,74,0.4);
+  transition:all .3s;
+}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(201,24,74,0.5)}
+.btn-gold{
+  display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,var(--gold),#a87c20);
+  color:#fff;padding:16px 34px;border-radius:50px;
+  font-size:clamp(14px,3.5vw,17px);font-weight:600;
+  text-decoration:none;letter-spacing:.5px;
+  box-shadow:0 8px 30px rgba(212,169,76,0.4);
+  transition:all .3s;
+}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(212,169,76,0.5)}
+
+/* Scroll hint */
+.scroll-hint{
+  position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+  color:rgba(255,255,255,0.6);
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  font-size:.75rem;letter-spacing:2px;text-transform:uppercase;
+  animation:bounce 2s infinite;
+}
+.scroll-hint i{font-size:18px}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+/* ── SECTION BASE ── */
+.section{padding:80px 0}
+@media(max-width:768px){.section{padding:60px 0}}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px}
+
+.sec-label{
+  display:inline-flex;align-items:center;gap:8px;
+  color:var(--rose);font-size:.8rem;
+  letter-spacing:3px;text-transform:uppercase;font-weight:600;
+  margin-bottom:14px;
+}
+.sec-label::before,.sec-label::after{content:'';display:block;width:28px;height:1px;background:var(--gold)}
+.sec-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(30px,6vw,56px);
+  font-weight:700;color:var(--plum);
+  line-height:1.15;margin-bottom:14px;
+}
+.sec-sub{color:var(--gray);font-size:clamp(15px,2.5vw,17px);max-width:580px}
+.sec-head{text-align:center;margin-bottom:60px}
+.sec-head .sec-label{justify-content:center}
+.sec-head .sec-sub{margin:0 auto}
+
+/* ── NUMERI ── */
+.nums{
+  background:linear-gradient(135deg,var(--plum),var(--rose));
+  padding:60px 0;
+}
+.nums-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:30px;text-align:center;
+}
+.num-item{color:#fff}
+.num-val{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(44px,8vw,64px);font-weight:700;
+  line-height:1;
+  background:linear-gradient(90deg,#fff,var(--gold-light));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.num-label{font-size:.88rem;opacity:.85;letter-spacing:1px;margin-top:6px}
+
+/* ── SERVIZI ── */
+.services{background:var(--white)}
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));
+  gap:24px;
+}
+.srv-card{
+  background:var(--cream);
+  border:1px solid rgba(201,24,74,0.1);
+  border-radius:var(--radius);
+  padding:36px 28px;
+  transition:all .3s;
+  position:relative;overflow:hidden;
+}
+.srv-card::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--gold),var(--rose));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .3s;
+}
+.srv-card:hover{
+  transform:translateY(-6px);
+  box-shadow:var(--shadow-med);
+  border-color:rgba(201,24,74,0.25);
+  background:#fff;
+}
+.srv-card:hover::before{transform:scaleX(1)}
+.srv-emoji{
+  font-size:42px;margin-bottom:18px;
+  display:block;
+}
+.srv-card h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.45rem;font-weight:700;
+  color:var(--plum);margin-bottom:10px;
+}
+.srv-card p{color:var(--gray);font-size:.95rem;line-height:1.65}
+.srv-tag{
+  display:inline-block;margin-top:16px;
+  font-size:.78rem;letter-spacing:1.5px;
+  text-transform:uppercase;font-weight:600;
+  color:var(--rose);
+}
+
+/* ── PERCHÉ NOI ── */
+.why{background:var(--plum);padding:80px 0}
+.why-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:50px;align-items:center;
+}
+@media(max-width:768px){.why-grid{grid-template-columns:1fr}}
+.why-text .sec-title{color:#fff}
+.why-text .sec-label::before,.why-text .sec-label::after{background:var(--gold)}
+.why-text .sec-label{color:var(--gold-light)}
+.why-text p{color:rgba(255,255,255,0.8);font-size:1.05rem;margin-bottom:20px}
+.why-list{list-style:none;margin:30px 0}
+.why-list li{
+  display:flex;align-items:flex-start;gap:14px;
+  color:rgba(255,255,255,0.9);
+  font-size:1rem;margin-bottom:18px;
+}
+.why-list li i{color:var(--gold);font-size:18px;margin-top:3px;flex-shrink:0}
+.why-cards{display:flex;flex-direction:column;gap:20px}
+.why-card{
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(212,169,76,0.25);
+  border-radius:var(--radius);padding:28px;
+  transition:all .3s;
+}
+.why-card:hover{background:rgba(255,255,255,0.13);transform:translateX(6px)}
+.why-card h4{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.3rem;color:#fff;margin-bottom:8px;
+}
+.why-card p{color:rgba(255,255,255,0.7);font-size:.93rem}
+.why-card-icon{font-size:28px;margin-bottom:12px}
+
+/* ── GALLERY ── */
+.gallery{background:var(--cream)}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  grid-template-rows:auto;
+  gap:16px;
+}
+@media(max-width:640px){
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery-item.feat{grid-column:1/-1}
+}
+.gallery-item{
+  border-radius:var(--radius-sm);
+  overflow:hidden;
+  position:relative;
+  aspect-ratio:4/3;
+  background:#f0dce3;
+}
+.gallery-item.feat{
+  grid-column:span 2;
+  aspect-ratio:16/9;
+}
+.gallery-item img{
+  width:100%;height:100%;
+  object-fit:cover;
+  transition:transform .5s;
+}
+.gallery-item:hover img{transform:scale(1.08)}
+.gallery-item::after{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(160deg,transparent 50%,rgba(89,13,34,0.7));
+  opacity:0;transition:opacity .3s;
+}
+.gallery-item:hover::after{opacity:1}
+
+/* ── CHI SIAMO ── */
+.about{background:#fff}
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:60px;align-items:center;
+}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr}}
+.about-img-wrap{position:relative}
+.about-img-wrap img{
+  width:100%;border-radius:var(--radius);
+  aspect-ratio:4/5;object-fit:cover;
+  box-shadow:var(--shadow-med);
+}
+.about-badge{
+  position:absolute;bottom:-20px;right:-20px;
+  background:linear-gradient(135deg,var(--gold),#a87c20);
+  color:#fff;border-radius:var(--radius);
+  padding:20px 24px;text-align:center;
+  box-shadow:0 8px 30px rgba(212,169,76,0.4);
+}
+@media(max-width:480px){.about-badge{bottom:-10px;right:10px}}
+.about-badge .num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:42px;font-weight:700;line-height:1;display:block;
+}
+.about-badge small{font-size:.78rem;letter-spacing:1px;opacity:.9}
+.about-text .sec-sub{max-width:100%;margin-bottom:22px;color:var(--gray)}
+.feature-row{display:flex;flex-direction:column;gap:18px;margin-top:30px}
+.feat-item{
+  display:flex;align-items:flex-start;gap:16px;
+  padding:18px;border-radius:var(--radius-sm);
+  background:var(--cream);border:1px solid rgba(201,24,74,0.1);
+}
+.feat-icon{
+  width:46px;height:46px;border-radius:50%;
+  background:linear-gradient(135deg,var(--rose),var(--plum));
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:18px;flex-shrink:0;
+}
+.feat-item h4{font-size:1rem;font-weight:600;color:var(--plum);margin-bottom:4px}
+.feat-item p{font-size:.9rem;color:var(--gray)}
+
+/* ── TESTIMONIANZE ── */
+.testi{background:var(--cream);padding:80px 0}
+.testi-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));
+  gap:24px;
+}
+.testi-card{
+  background:#fff;border-radius:var(--radius);
+  padding:32px;
+  box-shadow:0 2px 20px rgba(201,24,74,0.06);
+  border:1px solid rgba(201,24,74,0.08);
+  transition:transform .3s,box-shadow .3s;
+}
+.testi-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-soft)}
+.stars{color:var(--gold);font-size:15px;margin-bottom:16px}
+.testi-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.15rem;font-style:italic;
+  color:var(--plum);line-height:1.7;margin-bottom:22px;
+}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-avatar{
+  width:44px;height:44px;border-radius:50%;
+  background:linear-gradient(135deg,var(--rose),var(--plum));
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-family:'Cormorant Garamond',serif;
+  font-size:1.2rem;font-weight:700;flex-shrink:0;
+}
+.testi-name{font-weight:600;font-size:.95rem;color:var(--dark)}
+.testi-event{font-size:.82rem;color:var(--gray)}
+
+/* ── PRENOTA (WhatsApp) ── */
+.book{
+  background:linear-gradient(135deg,var(--rose),var(--plum));
+  padding:80px 0;position:relative;overflow:hidden;
+}
+.book::before{
+  content:'';
+  position:absolute;top:-40%;right:-15%;
+  width:600px;height:600px;border-radius:50%;
+  background:rgba(255,255,255,0.05);
+}
+.book-box{
+  background:rgba(255,255,255,0.97);
+  border-radius:24px;padding:60px 50px;
+  max-width:860px;margin:0 auto;
+  text-align:center;position:relative;z-index:1;
+  box-shadow:0 25px 70px rgba(0,0,0,0.25);
+}
+@media(max-width:600px){.book-box{padding:40px 22px}}
+.book-box .sec-title{color:var(--plum)}
+.book-box .sec-sub{margin:0 auto;max-width:560px;color:var(--gray)}
+.feat-icons{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:28px;
+  margin:40px 0;
+}
+.fi-item{
+  background:var(--cream);border:1px solid rgba(201,24,74,0.15);
+  border-radius:var(--radius);padding:24px 20px;
+  width:min(190px,45%);text-align:center;
+  transition:all .3s;
+}
+.fi-item:hover{transform:translateY(-6px);box-shadow:var(--shadow-soft)}
+.fi-item i{font-size:38px;color:var(--rose);margin-bottom:12px;display:block}
+.fi-item h4{font-size:1rem;font-weight:600;color:var(--plum);margin-bottom:5px}
+.fi-item p{font-size:.83rem;color:var(--gray)}
+.btn-wa{
+  display:inline-flex;align-items:center;gap:12px;
+  background:linear-gradient(135deg,#25D366,#128C7E);
+  color:#fff;padding:18px 42px;border-radius:50px;
+  font-size:clamp(15px,3.5vw,18px);font-weight:700;
+  text-decoration:none;letter-spacing:.5px;
+  box-shadow:0 8px 30px rgba(37,211,102,0.45);
+  transition:all .3s;
+}
+.btn-wa:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(37,211,102,0.55)}
+.btn-wa i{font-size:24px}
+.book-phone{margin-top:22px;font-size:1rem;color:var(--gray)}
+.book-phone strong{color:var(--rose);font-size:1.15rem}
+
+/* ── FAQ ── */
+.faq{background:#fff;padding:80px 0}
+.faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.faq-item{
+  border:1px solid rgba(201,24,74,0.15);
+  border-radius:var(--radius-sm);
+  overflow:hidden;
+}
+.faq-q{
+  width:100%;background:none;border:none;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 24px;cursor:pointer;
+  font-family:'DM Sans',sans-serif;
+  font-size:1.02rem;font-weight:600;
+  color:var(--plum);text-align:left;gap:12px;
+  transition:background .2s;
+}
+.faq-q:hover{background:var(--rose-pale)}
+.faq-q i{color:var(--rose);font-size:14px;flex-shrink:0;transition:transform .3s}
+.faq-item.open .faq-q i{transform:rotate(180deg)}
+.faq-a{
+  max-height:0;overflow:hidden;
+  transition:max-height .4s ease,padding .3s;
+  padding:0 24px;
+  color:var(--gray);font-size:.96rem;line-height:1.7;
+}
+.faq-item.open .faq-a{max-height:300px;padding:0 24px 20px}
+
+/* ── CONTATTI ── */
+.contact{background:var(--cream);padding:80px 0}
+.contact-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:40px;align-items:start;
+}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
+.contact-info-list{display:flex;flex-direction:column;gap:22px}
+.ci-item{
+  display:flex;align-items:flex-start;gap:18px;
+  background:#fff;border-radius:var(--radius-sm);
+  padding:22px;border:1px solid rgba(201,24,74,0.1);
+}
+.ci-icon{
+  width:50px;height:50px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--rose),var(--plum));
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:20px;
+}
+.ci-body h4{font-size:1rem;font-weight:600;color:var(--plum);margin-bottom:5px}
+.ci-body p,.ci-body a{font-size:.95rem;color:var(--gray);text-decoration:none}
+.ci-body a:hover{color:var(--rose)}
+.ci-body strong{color:var(--rose)}
+.social-row{display:flex;gap:14px;margin-top:6px}
+.soc-btn{
+  display:flex;align-items:center;gap:8px;
+  padding:8px 16px;border-radius:50px;
+  font-size:.88rem;font-weight:600;text-decoration:none;
+  transition:all .3s;
+}
+.soc-fb{background:#1877F2;color:#fff}
+.soc-ig{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff}
+.soc-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.2)}
+
+/* Map */
+.map-card{
+  border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow-soft);
+  height:100%;min-height:400px;
+}
+.map-card iframe{width:100%;height:100%;border:none;min-height:400px}
+
+/* ── FOOTER ── */
+footer{
+  background:linear-gradient(135deg,#12040c,#25050f);
+  color:rgba(255,255,255,0.8);
+  padding:70px 0 28px;
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr;
+  gap:50px;margin-bottom:50px;
+}
+@media(max-width:768px){.footer-grid{grid-template-columns:1fr}}
+.footer-brand{}
+.footer-brand .ft-logo{color:#fff;font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;margin-bottom:12px}
+.footer-brand p{font-size:.9rem;line-height:1.7;max-width:280px}
+.ft-social{display:flex;gap:12px;margin-top:22px}
+.ft-soc{
+  width:40px;height:40px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,0.1);color:#fff;
+  text-decoration:none;font-size:16px;
+  border:1px solid rgba(255,255,255,0.15);
+  transition:all .3s;
+}
+.ft-soc:hover{background:var(--rose);border-color:var(--rose);transform:translateY(-3px)}
+.ft-col h4{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.2rem;color:#fff;font-weight:700;
+  margin-bottom:20px;padding-bottom:10px;
+  border-bottom:1px solid rgba(212,169,76,0.3);
+}
+.ft-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+.ft-links a{
+  color:rgba(255,255,255,0.7);text-decoration:none;
+  font-size:.92rem;transition:all .25s;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.ft-links a::before{content:'→';opacity:0;transform:translateX(-6px);transition:all .25s;font-size:.8rem}
+.ft-links a:hover{color:var(--gold-light);padding-left:6px}
+.ft-links a:hover::before{opacity:1;transform:translateX(0)}
+.ft-bottom{
+  border-top:1px solid rgba(255,255,255,0.07);
+  padding-top:24px;
+  display:flex;flex-wrap:wrap;gap:10px;
+  justify-content:space-between;align-items:center;
+  font-size:.84rem;color:rgba(255,255,255,0.45);
+}
+.ft-bottom a{color:rgba(255,255,255,0.45);text-decoration:none}
+.ft-bottom a:hover{color:var(--gold-light)}
+
+/* ── FLOATING WA ── */
+.float-wa{
+  position:fixed;bottom:24px;right:24px;z-index:900;
+  width:60px;height:60px;border-radius:50%;
+  background:linear-gradient(135deg,#25D366,#128C7E);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:28px;text-decoration:none;
+  box-shadow:0 6px 25px rgba(37,211,102,0.5);
+  transition:all .3s;
+  animation:waglow 3s infinite;
+}
+.float-wa:hover{transform:scale(1.12);box-shadow:0 10px 35px rgba(37,211,102,0.65)}
+@keyframes waglow{0%,100%{box-shadow:0 6px 25px rgba(37,211,102,0.5)}50%{box-shadow:0 6px 40px rgba(37,211,102,0.75)}}
+
+/* ── UTILITY ── */
+.text-center{text-align:center}
+.mt-4{margin-top:16px}
+.mt-8{margin-top:32px}
+
+/* ── ANIMATIONS ── */
+.reveal{
+  opacity:0;transform:translateY(30px);
+  transition:opacity .7s ease,transform .7s ease;
+}
+.reveal.vis{opacity:1;transform:translateY(0)}
+.reveal-l{opacity:0;transform:translateX(-30px);transition:opacity .7s ease,transform .7s ease}
+.reveal-l.vis{opacity:1;transform:translateX(0)}
+.reveal-r{opacity:0;transform:translateX(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal-r.vis{opacity:1;transform:translateX(0)}
+</style>
 </head>
 <body>
-    <!-- Loader Elegante -->
-    <div id="loader">
-        <div class="loader-content">
-            <div class="loader-logo">
-                <img src="logoa.png" alt="Happy Shop Logo">
-            </div>
-            <div class="loader-text">Happy Shop Events</div>
-            <div class="progress-bar">
-                <div class="progress"></div>
-            </div>
-        </div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="ld-icon">💒</div>
+  <div class="ld-name">Happy Shop Events</div>
+  <div class="ld-bar"><div class="ld-fill"></div></div>
+</div>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/393290474246?text=Ciao%20Happy%20Shop!%20Vorrei%20informazioni%20per%20il%20mio%20evento." class="float-wa" target="_blank" rel="noopener" aria-label="Contattaci su WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- HEADER -->
+<header id="hdr">
+  <div class="hdr">
+    <a href="#home" class="hdr-brand">
+      <img src="logoa.png" alt="Happy Shop Ancona Logo" loading="eager">
+      <div class="brand-sep"></div>
+      <img src="logob.png" alt="Martina Catering Logo" loading="eager">
+    </a>
+    <nav class="hdr-nav" aria-label="Navigazione principale">
+      <ul>
+        <li><a href="#home" class="act">Home</a></li>
+        <li><a href="#servizi">Servizi</a></li>
+        <li><a href="#galleria">Galleria</a></li>
+        <li><a href="#chi-siamo">Chi Siamo</a></li>
+        <li><a href="#prenota">Prenota</a></li>
+      </ul>
+    </nav>
+    <button class="burger" id="burger" aria-label="Apri menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<nav class="mob-nav" id="mobNav" aria-label="Menu mobile">
+  <a href="#home">Home</a>
+  <a href="#servizi">Servizi</a>
+  <a href="#galleria">Galleria</a>
+  <a href="#chi-siamo">Chi Siamo</a>
+  <a href="#prenota">Prenota</a>
+  <a href="https://wa.me/393290474246" class="mob-whatsapp" target="_blank" rel="noopener">
+    <i class="fab fa-whatsapp"></i> WhatsApp
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home" aria-label="Benvenuti a Happy Shop Ancona">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">✨ Matrimoni & Eventi dal 2015</div>
+    <h1>Creiamo insieme il tuo evento <em>indimenticabile</em></h1>
+    <p>Specialisti in matrimoni ed eventi ad Ancona e in tutta Italia. Torte nuziali, allestimenti, pasticceria e wedding planning con passione e creatività.</p>
+    <div class="hero-btns">
+      <a href="#prenota" class="btn-primary"><i class="fab fa-whatsapp"></i> Prenota su WhatsApp</a>
+      <a href="#servizi" class="btn-gold"><i class="fas fa-star"></i> Scopri i Servizi</a>
     </div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true">
+    <i class="fas fa-chevron-down"></i>
+    <span>Scorri</span>
+  </div>
+</section>
 
-    <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <div class="header-logos">
-                <img src="logoa.png" alt="Happy Shop Logo">
-                <img src="logob.png" alt="Martina Catering Logo">
-            </div>
-            <div class="mobile-menu">☰</div>
-            <nav>
-                <ul>
-                    <li><a href="#home" class="active">Home</a></li>
-                    <li><a href="#servizi">Servizi</a></li>
-                    <li><a href="#galleria">Galleria</a></li>
-                    <li><a href="#chi-siamo">Chi Siamo</a></li>
-                    <li><a href="#prenota">Prenota</a></li>
-                </ul>
-            </nav>
+<!-- NUMERI -->
+<div class="nums" aria-label="I nostri numeri">
+  <div class="wrap">
+    <div class="nums-grid">
+      <div class="num-item reveal">
+        <div class="num-val">500+</div>
+        <div class="num-label">EVENTI REALIZZATI</div>
+      </div>
+      <div class="num-item reveal">
+        <div class="num-val">10+</div>
+        <div class="num-label">ANNI DI ESPERIENZA</div>
+      </div>
+      <div class="num-item reveal">
+        <div class="num-val">100%</div>
+        <div class="num-label">CLIENTI SODDISFATTI</div>
+      </div>
+      <div class="num-item reveal">
+        <div class="num-val">2</div>
+        <div class="num-label">BRAND DI ECCELLENZA</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVIZI -->
+<section class="section services" id="servizi" aria-labelledby="srv-title">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-label">Cosa offriamo</div>
+      <h2 class="sec-title" id="srv-title">I Nostri Servizi</h2>
+      <p class="sec-sub">Tutto il necessario per un evento perfetto, curato in ogni minimo dettaglio</p>
+    </div>
+    <div class="services-grid">
+      <article class="srv-card reveal">
+        <span class="srv-emoji" aria-hidden="true">🍰</span>
+        <h3>Torte Nuziali</h3>
+        <p>Capolavori di pasticceria personalizzati per il giorno più bello della tua vita. Ogni torta è unica come la vostra storia.</p>
+        <span class="srv-tag">→ Su misura</span>
+      </article>
+      <article class="srv-card reveal">
+        <span class="srv-emoji" aria-hidden="true">🎂</span>
+        <h3>Torte Decorate</h3>
+        <p>Per compleanni, anniversari e ogni celebrazione speciale. Disegni originali e sapori irresistibili.</p>
+        <span class="srv-tag">→ Qualsiasi occasione</span>
+      </article>
+      <article class="srv-card reveal">
+        <span class="srv-emoji" aria-hidden="true">🧁</span>
+        <h3>Piccola Pasticceria</h3>
+        <p>Selezioni raffinate di dolci artigianali per deliziare i vostri ospiti con eleganza e stile.</p>
+        <span class="srv-tag">→ Artigianale</span>
+      </article>
+      <article class="srv-card reveal">
+        <span class="srv-emoji" aria-hidden="true">🎪</span>
+        <h3>Cupcakes Creativi</h3>
+        <p>Design unici e sapori sorprendenti. I nostri cupcake sono piccole opere d'arte commestibili.</p>
+        <span class="srv-tag">→ Design unico</span>
+      </article>
+      <article class="srv-card reveal">
+        <span class="srv-emoji" aria-hidden="true">🎉</span>
+        <h3>Confetti & Bomboniere</h3>
+        <p>La tradizione italiana dei confetti in mille varianti. Bomboniere eleganti che i tuoi ospiti ameranno.</p>
+        <span class="srv-tag">→ Tradizione italiana</span>
+      </article>
+      <article class="srv-card reveal">
+        <span class="srv-emoji" aria-hidden="true">✨</span>
+        <h3>Allestimenti Completi</h3>
+        <p>Trasformiamo ogni spazio in un luogo magico. Dalla scenografia floreale alle decorazioni tematiche.</p>
+        <span class="srv-tag">→ Scenografici</span>
+      </article>
+      <article class="srv-card reveal">
+        <span class="srv-emoji" aria-hidden="true">🎈</span>
+        <h3>Palloncini & Decorazioni</h3>
+        <p>Installazioni con palloncini ad aria ed elio per creare atmosfere festose e colorate che stupiscono.</p>
+        <span class="srv-tag">→ Wow effect</span>
+      </article>
+      <article class="srv-card reveal">
+        <span class="srv-emoji" aria-hidden="true">💌</span>
+        <h3>Partecipazioni</h3>
+        <p>Inviti eleganti e personalizzati che anticipano la magia del vostro grande giorno con stile.</p>
+        <span class="srv-tag">→ Personalizzate</span>
+      </article>
+      <article class="srv-card reveal">
+        <span class="srv-emoji" aria-hidden="true">💍</span>
+        <h3>Wedding Planning</h3>
+        <p>Il tuo matrimonio dalla A alla Z. Coordiniamo ogni dettaglio perché tu possa vivere il momento senza pensieri.</p>
+        <span class="srv-tag">→ Servizio completo</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PERCHÉ NOI -->
+<section class="why" id="perche-noi" aria-labelledby="why-title">
+  <div class="wrap">
+    <div class="why-grid">
+      <div class="why-text reveal-l">
+        <div class="sec-label">La nostra differenza</div>
+        <h2 class="sec-title" id="why-title">Perché scegliere Happy Shop?</h2>
+        <p>Da oltre 10 anni siamo il punto di riferimento per matrimoni ed eventi ad Ancona e nelle Marche. Non siamo solo fornitori: siamo i partner del tuo sogno.</p>
+        <ul class="why-list">
+          <li><i class="fas fa-check-circle"></i> Esperienza comprovata con oltre 500 eventi realizzati</li>
+          <li><i class="fas fa-check-circle"></i> Collaborazione esclusiva con Martina Catering per l'eccellenza gastronomica</li>
+          <li><i class="fas fa-check-circle"></i> Servizio completamente personalizzato — nessun evento è uguale all'altro</li>
+          <li><i class="fas fa-check-circle"></i> Risposta immediata su WhatsApp e preventivi gratuiti</li>
+          <li><i class="fas fa-check-circle"></i> Operativi in tutta Italia con la stessa qualità e cura</li>
+        </ul>
+        <a href="#prenota" class="btn-primary mt-8"><i class="fas fa-calendar-check"></i> Richiedi Consulenza Gratuita</a>
+      </div>
+      <div class="why-cards reveal-r">
+        <div class="why-card">
+          <div class="why-card-icon">🏆</div>
+          <h4>Qualità Garantita</h4>
+          <p>Utilizziamo solo ingredienti di prima scelta e materiali premium per ogni creazione.</p>
         </div>
-    </header>
-
-    <!-- Hero Section - Sans filtre -->
-    <section class="hero" id="home">
-        <div class="container hero-content">
-            <h1>CREIAMO INSIEME IL TUO EVENTO INDIMENTICABILE</h1>
-            <p>Specialisti nella preparazione di matrimoni ed eventi ad Ancona e in tutta Italia. Dalla piccola pasticceria agli allestimenti completi, realizziamo i tuoi sogni con passione e creatività.</p>
-            <a href="#prenota" class="btn">PRENOTA IL TUO EVENTO</a>
+        <div class="why-card">
+          <div class="why-card-icon">❤️</div>
+          <h4>Passione e Creatività</h4>
+          <p>Ogni evento è realizzato con dedizione e un tocco personale che lo rende davvero speciale.</p>
         </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services" id="servizi">
-        <div class="container">
-            <div class="section-title">
-                <h2>I NOSTRI SERVIZI</h2>
-                <p>Scopri tutti i servizi che offriamo per rendere il tuo evento unico e memorabile</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🍰</div>
-                    <div class="service-content">
-                        <h3>TORTE NUZIALI</h3>
-                        <p>Torte nuziali personalizzate create con passione e creatività per il tuo giorno speciale.</p>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🎂</div>
-                    <div class="service-content">
-                        <h3>TORTE DECORATE</h3>
-                        <p>Torte decorate per tutte le occasioni, dai compleanni alle celebrazioni speciali.</p>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🧁</div>
-                    <div class="service-content">
-                        <h3>PICCOLA PASTICCERIA</h3>
-                        <p>Piccola pasticceria fine e deliziosa per deliziare i tuoi ospiti.</p>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🧁</div>
-                    <div class="service-content">
-                        <h3>CUPCAKES</h3>
-                        <p>Cupcake creativi e deliziosi in una varietà di sapori e design.</p>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🎉</div>
-                    <div class="service-content">
-                        <h3>CONFETTI</h3>
-                        <p>Confetti di tutti i tipi per aggiungere un tocco di magia al tuo evento.</p>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🎪</div>
-                    <div class="service-content">
-                        <h3>ALLESTIMENTI</h3>
-                        <p>Allestimenti completi per feste e matrimoni, dalla decorazione alla logistica.</p>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🎈</div>
-                    <div class="service-content">
-                        <h3>PALLONCINI</h3>
-                        <p>Palloncini ad aria ed elio per creare un'atmosfera festosa e gioiosa.</p>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">💌</div>
-                    <div class="service-content">
-                        <h3>PARTECIPAZIONI</h3>
-                        <p>Partecipazioni e bomboniere eleganti per completare il tuo evento.</p>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">📋</div>
-                    <div class="service-content">
-                        <h3>WEDDING PLANNER</h3>
-                        <p>Servizio completo di wedding planning per organizzare il tuo matrimonio dalla A alla Z.</p>
-                    </div>
-                </div>
-            </div>
+        <div class="why-card">
+          <div class="why-card-icon">🍽️</div>
+          <h4>Martina Catering</h4>
+          <p>In partnership con Martina Catering per un'esperienza gastronomica di altissimo livello.</p>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- WhatsApp Booking Section -->
-    <section class="whatsapp-booking" id="prenota">
-        <div class="container">
-            <div class="whatsapp-box">
-                <h2>PRENOTA IL TUO EVENTO SU WHATSAPP</h2>
-                <p>Contattaci direttamente su WhatsApp per discutere dei dettagli del tuo evento, ricevere un preventivo personalizzato e prenotare i nostri servizi in modo rapido e semplice.</p>
-                
-                <div class="whatsapp-features">
-                    <div class="whatsapp-feature">
-                        <i class="fas fa-bolt"></i>
-                        <h4>RISPOSTA IMMEDIATA</h4>
-                        <p>Rispondiamo entro pochi minuti</p>
-                    </div>
-                    <div class="whatsapp-feature">
-                        <i class="fas fa-comment-dots"></i>
-                        <h4>CHAT DIRETTA</h4>
-                        <p>Comunicazione semplice e immediata</p>
-                    </div>
-                    <div class="whatsapp-feature">
-                        <i class="fas fa-calendar-alt"></i>
-                        <h4>PRENOTAZIONE ISTANTANEA</h4>
-                        <p>Conferma immediata della disponibilità</p>
-                    </div>
-                </div>
-                
-                <a href="https://wa.me/393290474246?text=Ciao%20Happy%20Shop!%20Vorrei%20informazioni%20per%20prenotare%20un%20evento.%20Mi%20piacerebbe%20discutere%20i%20dettagli." class="btn btn-whatsapp" target="_blank">
-                    <i class="fab fa-whatsapp"></i> PRENOTA SU WHATSAPP
-                </a>
-                
-                <p style="margin-top: 25px; font-size: 1.1rem; font-weight: 600; color: var(--secondary-color);">Oppure chiamaci direttamente: <strong style="color: var(--primary-color);">+39 329 047 4246</strong></p>
-            </div>
+<!-- GALLERY -->
+<section class="section gallery" id="galleria" aria-labelledby="gallery-title">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-label">Le nostre creazioni</div>
+      <h2 class="sec-title" id="gallery-title">Galleria</h2>
+      <p class="sec-sub">Una selezione delle nostre realizzazioni più belle</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item feat reveal"><img src="1img.jpg" alt="Torta nuziale personalizzata Happy Shop Ancona" loading="lazy"></div>
+      <div class="gallery-item reveal"><img src="2img.jpg" alt="Decorazione matrimonio Ancona" loading="lazy"></div>
+      <div class="gallery-item reveal"><img src="3img.jpg" alt="Cupcake creativi per eventi" loading="lazy"></div>
+      <div class="gallery-item reveal"><img src="4img.jpg" alt="Palloncini decorativi per feste" loading="lazy"></div>
+      <div class="gallery-item feat reveal"><img src="5img.jpg" alt="Allestimento matrimonio completo" loading="lazy"></div>
+      <div class="gallery-item reveal"><img src="6img.jpg" alt="Bomboniere eleganti matrimonio" loading="lazy"></div>
+      <div class="gallery-item reveal"><img src="7img.jpg" alt="Piccola pasticceria per eventi" loading="lazy"></div>
+      <div class="gallery-item reveal"><img src="8img.jpg" alt="Wedding planning Ancona" loading="lazy"></div>
+      <div class="gallery-item reveal"><img src="9img.jpg" alt="Confetti e decorazioni matrimonio" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CHI SIAMO -->
+<section class="section about" id="chi-siamo" aria-labelledby="about-title">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal-l">
+        <img src="logob.png" alt="Martina Catering - Partner di Happy Shop Ancona" loading="lazy">
+        <div class="about-badge">
+          <span class="num">10+</span>
+          <small>Anni di Passione</small>
         </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section class="gallery" id="galleria">
-        <div class="container">
-            <div class="section-title">
-                <h2>LA NOSTRA GALLERIA</h2>
-                <p>Alcune delle nostre realizzazioni più belle</p>
+      </div>
+      <div class="about-text reveal-r">
+        <div class="sec-label">La nostra storia</div>
+        <h2 class="sec-title" id="about-title">Chi Siamo</h2>
+        <p class="sec-sub">Da diversi anni, <strong>Happy Shop</strong> è il punto di riferimento per matrimoni ed eventi ad Ancona e in tutta Italia, in partnership con <strong>Martina Catering</strong>.</p>
+        <p class="sec-sub">Il nostro approccio è completamente personalizzato: ascoltiamo i tuoi desideri, il tuo stile e la tua storia per creare un evento che ti rappresenti davvero — unico, elegante e indimenticabile.</p>
+        <div class="feature-row">
+          <div class="feat-item">
+            <div class="feat-icon"><i class="fas fa-heart"></i></div>
+            <div>
+              <h4>Approccio Personalizzato</h4>
+              <p>Ogni evento è unico. Ascoltiamo ogni tuo desiderio e lo realizziamo con passione.</p>
             </div>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="1img.jpg" alt="Torta nuziale">
-                    <div class="gallery-overlay"></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="2img.jpg" alt="Decorazione matrimonio">
-                    <div class="gallery-overlay"></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="3img.jpg" alt="Cupcakes">
-                    <div class="gallery-overlay"></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="4img.jpg" alt="Palloncini">
-                    <div class="gallery-overlay"></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="5img.jpg" alt="Bomboniere">
-                    <div class="gallery-overlay"></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="6img.jpg" alt="Allestimenti">
-                    <div class="gallery-overlay"></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="7img.jpg" alt="Torta nuziale">
-                    <div class="gallery-overlay"></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="8img.jpg" alt="Decorazione matrimonio">
-                    <div class="gallery-overlay"></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="9img.jpg" alt="Cupcakes">
-                    <div class="gallery-overlay"></div>
-                </div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-icon"><i class="fas fa-utensils"></i></div>
+            <div>
+              <h4>Partnership con Martina Catering</h4>
+              <p>Eccellenza gastronomica per completare l'esperienza del tuo evento con gusto raffinato.</p>
             </div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <h4>Ancona & Tutta Italia</h4>
+              <p>Operiamo in tutta Italia garantendo la stessa qualità e attenzione al dettaglio ovunque.</p>
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- About Section -->
-    <section class="about" id="chi-siamo">
-        <div class="container">
-            <div class="section-title">
-                <h2>CHI SIAMO</h2>
-                <p>Da diversi anni, <strong style="color: var(--primary-color);">Happy Shop</strong> si è affermata come un punto di riferimento nella preparazione di eventi e matrimoni ad Ancona e in tutta Italia.</p>
-                <p>In collaborazione con <strong style="color: var(--secondary-color);">Martina Catering</strong>, un partner d'eccellenza nel settore della ristorazione e del banqueting, offriamo un servizio completo e raffinato, curato in ogni minimo dettaglio.</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3 style="color: var(--primary-color); margin-bottom: 20px;">La nostra filosofia</h3>
-                    <p>Il nostro team appassionato e creativo lavora con dedizione per trasformare i tuoi sogni in realtà, accompagnandoti in ogni fase dell'organizzazione del tuo evento — dalla scelta del tema e della location, alla realizzazione di <strong>torte personalizzate</strong>, decorazioni su misura e allestimenti scenografici che lasciano il segno.</p>
-                    <p>Grazie alla collaborazione con <strong>Martina Catering</strong>, possiamo garantire un'esperienza gastronomica di altissimo livello, capace di deliziare ogni palato e rendere il tuo giorno ancora più speciale.</p>
-                    <p>Il nostro approccio è completamente personalizzato: ascoltiamo i tuoi desideri, il tuo stile e la tua storia per creare un evento che ti rappresenti davvero — unico, elegante e indimenticabile.</p>
-                    <a href="#prenota" class="btn" style="margin-top: 30px;">PRENOTA UNA CONSULENZA</a>
-                </div>
-                <div class="about-image">
-                    <img src="logob.png" alt="Martina Catering">
-                </div>
-            </div>
+<!-- TESTIMONIANZE -->
+<section class="testi" aria-labelledby="testi-title">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-label">Cosa dicono di noi</div>
+      <h2 class="sec-title" id="testi-title">Testimonianze</h2>
+      <p class="sec-sub">Le parole di chi ha vissuto la magia di Happy Shop</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"Happy Shop ha reso il nostro matrimonio un sogno. La torta nuziale era uno spettacolo e gli allestimenti perfetti in ogni dettaglio. Grazie di cuore!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar">M</div>
+          <div>
+            <div class="testi-name">Martina & Luca</div>
+            <div class="testi-event">Matrimonio a Ancona · 2024</div>
+          </div>
         </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact" id="contatti">
-        <div class="container">
-            <div class="section-title">
-                <h2>CONTATTACI</h2>
-                <p>Non esitare a contattarci per discutere del tuo progetto</p>
-            </div>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div class="contact-info-item">
-                        <div class="contact-icon">📍</div>
-                        <div>
-                            <h3>Indirizzo</h3>
-                            <p>Via delle Tavernelle 168, Ancona, Italia</p>
-                        </div>
-                    </div>
-                    <div class="contact-info-item">
-                        <div class="contact-icon">📞</div>
-                        <div>
-                            <h3>Telefono Happy Shop</h3>
-                            <p style="font-weight: 600; color: var(--primary-color);">+39 3290474246</p>
-                            <h3 style="margin-top: 15px;">Telefono Martina catering</h3>
-                            <p style="font-weight: 600; color: var(--secondary-color);">+39 3517155795</p>
-                        </div>
-                    </div>
-                    <div class="contact-info-item">
-                        <div class="contact-icon">✉️</div>
-                        <div>
-                            <h3>Email</h3>
-                            <p>happy_shop@virgilio.it</p>
-                        </div>
-                    </div>
-                    <div class="contact-info-item">
-                        <div class="contact-icon">🕒</div>
-                        <div>
-                            <h3>Orari di apertura</h3>
-                            <p>Lun - Ven: 9:00 - 19:00</p>
-                            <p>Sab: 9:00 - 13:00</p>
-                            <p style="margin-top: 10px; color: var(--primary-color); font-weight: 600;">Su appuntamento anche la domenica</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"Professionali, creativi e sempre disponibili. I cupcake per il battesimo di nostra figlia erano bellissimi e buonissimi. Li consiglio a tutti!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar">S</div>
+          <div>
+            <div class="testi-name">Sara & Daniele</div>
+            <div class="testi-event">Battesimo · Ancona 2024</div>
+          </div>
         </div>
-    </section>
-
-    <!-- Map Section -->
-    <section class="map-section">
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2876.308671363168!2d13.51821531549919!3d43.61587997912066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132d7f8b0c5c5c5f%3A0x7e33e9e9c5c5c5c5!2sVia%20delle%20Tavernelle%2C%20168%2C%2060129%20Ancona%20AN%2C%20Italia!5e0!3m2!1sit!2sit" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"Abbiamo scelto Happy Shop per la nostra festa di anniversario e siamo rimasti senza parole. Esperienza, passione e creatività al top. Il meglio ad Ancona!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar">G</div>
+          <div>
+            <div class="testi-name">Giulia & Marco</div>
+            <div class="testi-event">Anniversario · Ancona 2023</div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Happy Shop</h3>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/HappyShopAncona" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/happyshop_vivereacolori" class="social-link"><i class="fab fa-instagram"></i></a>
-                    </div>
-                    <h3 style="margin-top: 30px;">Martina Catering</h3>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/profile.php?id=61556548363993" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/martina.catering_ancona/" class="social-link"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>I Nostri Servizi</h3>
-                    <ul class="footer-links">
-                        <li><a href="#servizi">Torte Nuziali</a></li>
-                        <li><a href="#servizi">Torte Decorate</a></li>
-                        <li><a href="#servizi">Piccola Pasticceria</a></li>
-                        <li><a href="#servizi">Cupcakes</a></li>
-                        <li><a href="#servizi">Allestimenti</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Link Rapidi</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#servizi">Servizi</a></li>
-                        <li><a href="#galleria">Galleria</a></li>
-                        <li><a href="#chi-siamo">Chi Siamo</a></li>
-                        <li><a href="#prenota">Prenota</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2023 Happy Shop. Tutti i diritti riservati.</p>
-            </div>
+<!-- PRENOTA -->
+<section class="book" id="prenota" aria-labelledby="book-title">
+  <div class="wrap">
+    <div class="book-box reveal">
+      <div class="sec-label" style="justify-content:center">Prenota ora</div>
+      <h2 class="sec-title" id="book-title">Prenota il Tuo Evento su WhatsApp</h2>
+      <p class="sec-sub">Contattaci su WhatsApp per un preventivo gratuito e personalizzato. Risposta garantita entro pochi minuti!</p>
+      <div class="feat-icons">
+        <div class="fi-item">
+          <i class="fas fa-bolt"></i>
+          <h4>Risposta Immediata</h4>
+          <p>Ti rispondiamo entro pochi minuti</p>
         </div>
-    </footer>
+        <div class="fi-item">
+          <i class="fas fa-calculator"></i>
+          <h4>Preventivo Gratuito</h4>
+          <p>Nessun costo per la consulenza</p>
+        </div>
+        <div class="fi-item">
+          <i class="fas fa-calendar-check"></i>
+          <h4>Prenotazione Rapida</h4>
+          <p>Conferma immediata disponibilità</p>
+        </div>
+        <div class="fi-item">
+          <i class="fas fa-star"></i>
+          <h4>Servizio 5 Stelle</h4>
+          <p>Qualità garantita in ogni dettaglio</p>
+        </div>
+      </div>
+      <a href="https://wa.me/393290474246?text=Ciao%20Happy%20Shop!%20Vorrei%20informazioni%20per%20prenotare%20un%20evento.%20Mi%20piacerebbe%20discutere%20i%20dettagli." class="btn-wa" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i> Prenota su WhatsApp
+      </a>
+      <p class="book-phone">Oppure chiamaci: <strong>+39 329 047 4246</strong> · Martina Catering: <strong style="color:var(--plum)">+39 351 715 5795</strong></p>
+    </div>
+  </div>
+</section>
 
-    <script>
-        // Page Loader semplice
-        window.addEventListener('load', function() {
-            const loader = document.getElementById('loader');
-            setTimeout(function() {
-                loader.classList.add('fade-out');
-                // Rimuove il loader dal DOM dopo l'animazione
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                }, 500);
-            }, 1500);
-        });
+<!-- FAQ (SEO) -->
+<section class="faq" aria-labelledby="faq-title">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-label">Domande frequenti</div>
+      <h2 class="sec-title" id="faq-title">FAQ</h2>
+      <p class="sec-sub">Risposte alle domande più comuni sul nostro servizio</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Dove si trova Happy Shop ad Ancona?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-a">Happy Shop si trova in Via delle Tavernelle 168, Ancona (AN), 60129. Siamo facilmente raggiungibili e disponiamo di parcheggio nelle vicinanze.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Come posso richiedere un preventivo?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-a">Puoi contattarci direttamente su WhatsApp al +39 329 047 4246, chiamarci o scriverci a happy_shop@virgilio.it. Il preventivo è sempre gratuito e senza impegno. Rispondiamo generalmente entro pochi minuti su WhatsApp.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Quante in anticipo devo prenotare per un matrimonio?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-a">Per i matrimoni consigliamo di contattarci almeno 6-12 mesi prima della data. Per eventi più piccoli come feste di compleanno o battesimi, anche 4-6 settimane possono essere sufficienti. Prima ci contatti, più saremo in grado di garantire disponibilità e personalizzazione.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Operate solo ad Ancona o anche fuori città?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-a">Operiamo principalmente ad Ancona e nelle Marche, ma siamo disponibili per eventi in tutta Italia. Contattaci per discutere la logistica del tuo evento fuori sede.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Cosa include il servizio di Wedding Planning?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-a">Il nostro servizio di wedding planning comprende: coordinamento di tutte le fasi dell'evento, scelta della location, gestione dei fornitori, allestimenti e decorazioni, torta nuziale, piccola pasticceria, confetti e bomboniere, e in collaborazione con Martina Catering anche il catering completo. Offriamo un pacchetto tutto incluso o servizi singoli a seconda delle vostre esigenze.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Quali sono gli orari di apertura?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-a">Siamo aperti dal lunedì al venerdì dalle 9:00 alle 19:00, il sabato dalle 9:00 alle 13:00. Su appuntamento siamo disponibili anche la domenica. Per urgenze o richieste di informazioni potete sempre scriverci su WhatsApp.</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // Mobile Menu
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            document.querySelector('nav ul').classList.toggle('active');
-            this.classList.toggle('active');
-        });
+<!-- CONTATTI -->
+<section class="contact section" id="contatti" aria-labelledby="contact-title">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-label">Dove trovarci</div>
+      <h2 class="sec-title" id="contact-title">Contattaci</h2>
+      <p class="sec-sub">Siamo qui per rispondere a ogni tua domanda e aiutarti a pianificare l'evento perfetto</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info-list reveal-l">
+        <div class="ci-item">
+          <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div class="ci-body">
+            <h4>Indirizzo</h4>
+            <p>Via delle Tavernelle 168<br>Ancona (AN) 60129, Italia</p>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon"><i class="fas fa-phone"></i></div>
+          <div class="ci-body">
+            <h4>Telefoni</h4>
+            <p>Happy Shop: <strong><a href="tel:+393290474246">+39 329 047 4246</a></strong></p>
+            <p>Martina Catering: <a href="tel:+393517155795" style="color:var(--plum)">+39 351 715 5795</a></p>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+          <div class="ci-body">
+            <h4>Email</h4>
+            <p><a href="mailto:happy_shop@virgilio.it">happy_shop@virgilio.it</a></p>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon"><i class="fas fa-clock"></i></div>
+          <div class="ci-body">
+            <h4>Orari di Apertura</h4>
+            <p>Lun – Ven: 9:00 – 19:00<br>Sabato: 9:00 – 13:00</p>
+            <p style="margin-top:6px"><strong style="color:var(--rose)">Domenica: su appuntamento</strong></p>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon"><i class="fas fa-share-alt"></i></div>
+          <div class="ci-body">
+            <h4>Seguici sui Social</h4>
+            <div class="social-row" style="flex-wrap:wrap">
+              <a href="https://www.facebook.com/HappyShopAncona" class="soc-btn soc-fb" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i> Happy Shop</a>
+              <a href="https://www.instagram.com/happyshop_vivereacolori" class="soc-btn soc-ig" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> Happy Shop</a>
+            </div>
+            <div class="social-row" style="margin-top:10px;flex-wrap:wrap">
+              <a href="https://www.facebook.com/profile.php?id=61556548363993" class="soc-btn soc-fb" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i> Martina Catering</a>
+              <a href="https://www.instagram.com/martina.catering_ancona/" class="soc-btn soc-ig" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> Martina Catering</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="map-card reveal-r">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2876.308671363168!2d13.51821531549919!3d43.61587997912066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132d7f8b0c5c5c5f%3A0x7e33e9e9c5c5c5c5!2sVia%20delle%20Tavernelle%2C%20168%2C%2060129%20Ancona%20AN%2C%20Italia!5e0!3m2!1sit!2sit"
+          allowfullscreen=""
+          loading="lazy"
+          title="Posizione Happy Shop - Via delle Tavernelle 168, Ancona"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // Close mobile menu when clicking on links
-        document.querySelectorAll('nav ul li a').forEach(link => {
-            link.addEventListener('click', function() {
-                document.querySelector('nav ul').classList.remove('active');
-                document.querySelector('.mobile-menu').classList.remove('active');
-            });
-        });
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="ft-logo">Happy Shop Events</div>
+        <p>Specialisti in matrimoni ed eventi ad Ancona e in tutta Italia. In partnership con Martina Catering per un'esperienza indimenticabile.</p>
+        <div class="ft-social">
+          <a href="https://www.facebook.com/HappyShopAncona" class="ft-soc" target="_blank" rel="noopener" aria-label="Facebook Happy Shop"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/happyshop_vivereacolori" class="ft-soc" target="_blank" rel="noopener" aria-label="Instagram Happy Shop"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/393290474246" class="ft-soc" target="_blank" rel="noopener" aria-label="WhatsApp Happy Shop"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="ft-col">
+        <h4>Servizi</h4>
+        <ul class="ft-links">
+          <li><a href="#servizi">Torte Nuziali</a></li>
+          <li><a href="#servizi">Torte Decorate</a></li>
+          <li><a href="#servizi">Piccola Pasticceria</a></li>
+          <li><a href="#servizi">Cupcakes</a></li>
+          <li><a href="#servizi">Allestimenti</a></li>
+          <li><a href="#servizi">Wedding Planning</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Informazioni</h4>
+        <ul class="ft-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#chi-siamo">Chi Siamo</a></li>
+          <li><a href="#galleria">Galleria</a></li>
+          <li><a href="#prenota">Prenota</a></li>
+          <li><a href="#contatti">Contatti</a></li>
+          <li><a href="mailto:happy_shop@virgilio.it">Email</a></li>
+        </ul>
+        <div style="margin-top:24px">
+          <p style="font-size:.82rem;opacity:.6;margin-bottom:6px">📍 Via delle Tavernelle 168, Ancona</p>
+          <p style="font-size:.82rem;opacity:.6">📞 +39 329 047 4246</p>
+        </div>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <span>© 2025 Happy Shop Ancona. Tutti i diritti riservati.</span>
+      <span>P.IVA: IT · Via delle Tavernelle 168, 60129 Ancona</span>
+    </div>
+  </div>
+</footer>
 
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
+<script>
+// LOADER
+window.addEventListener('load',()=>{
+  setTimeout(()=>{
+    document.getElementById('loader').classList.add('out');
+  },1800);
+});
 
-        // Header Scroll Effect
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.padding = '5px 0';
-                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.15)';
-            } else {
-                header.style.padding = '15px 0';
-                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
-            }
-        });
+// BURGER MENU
+const burger=document.getElementById('burger');
+const mobNav=document.getElementById('mobNav');
+burger.addEventListener('click',()=>{
+  const open=mobNav.classList.toggle('open');
+  burger.classList.toggle('open',open);
+  burger.setAttribute('aria-expanded',open);
+  document.body.style.overflow=open?'hidden':'';
+});
+mobNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  mobNav.classList.remove('open');
+  burger.classList.remove('open');
+  burger.setAttribute('aria-expanded','false');
+  document.body.style.overflow='';
+}));
 
-        // WhatsApp Click Tracking
-        document.querySelector('.btn-whatsapp').addEventListener('click', function() {
-            console.log('WhatsApp booking button clicked');
-        });
+// HEADER SCROLL
+const hdr=document.getElementById('hdr');
+window.addEventListener('scroll',()=>{
+  hdr.classList.toggle('scrolled',window.scrollY>60);
+},{ passive:true });
 
-        // Aggiunge classe active al link corrente
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('nav ul li a');
+// ACTIVE NAV
+const sections=[...document.querySelectorAll('section[id],div[id]')];
+const navLinks=[...document.querySelectorAll('.hdr-nav a')];
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sections.forEach(s=>{
+    if(window.scrollY>=s.offsetTop-120)cur=s.id;
+  });
+  navLinks.forEach(l=>{
+    l.classList.toggle('act',l.getAttribute('href')==='#'+cur);
+  });
+},{ passive:true });
 
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= (sectionTop - 100)) {
-                    current = section.getAttribute('id');
-                }
-            });
+// SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(!t)return;
+    e.preventDefault();
+    window.scrollTo({top:t.offsetTop-72,behavior:'smooth'});
+  });
+});
 
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
+// REVEAL on scroll
+const ro=new IntersectionObserver(entries=>{
+  entries.forEach(en=>{
+    if(en.isIntersecting){
+      en.target.classList.add('vis');
+      ro.unobserve(en.target);
+    }
+  });
+},{threshold:0.12});
+document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el=>ro.observe(el));
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.closest('.faq-item');
+    const open=item.classList.toggle('open');
+    btn.setAttribute('aria-expanded',open);
+  });
+});
+
+// COUNTER animation
+function animateCounters(){
+  document.querySelectorAll('.num-val').forEach(el=>{
+    const txt=el.textContent;
+    const num=parseInt(txt);
+    if(isNaN(num))return;
+    const suffix=txt.replace(/[\d]/g,'');
+    let start=0,dur=1500,step=num/60;
+    const timer=setInterval(()=>{
+      start+=step;
+      if(start>=num){start=num;clearInterval(timer);}
+      el.textContent=Math.round(start)+suffix;
+    },dur/60);
+  });
+}
+const numsSection=document.querySelector('.nums');
+if(numsSection){
+  const cro=new IntersectionObserver(entries=>{
+    if(entries[0].isIntersecting){animateCounters();cro.disconnect();}
+  },{threshold:.3});
+  cro.observe(numsSection);
+}
+</script>
 </body>
 </html>
